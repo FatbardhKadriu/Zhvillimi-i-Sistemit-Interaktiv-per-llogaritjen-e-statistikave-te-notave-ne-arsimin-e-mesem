@@ -7,6 +7,7 @@ public class Klasa {
 		System.out.println("Test class");
 
 		System.out.println("Hello");
+		System.out.println("HI");
 	}
 
 }
