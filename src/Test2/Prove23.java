@@ -6,6 +6,7 @@ public class Prove23 {
 		
 		
 		System.out.println("1234567890");System.out.println("oijulknkjedskj");
+		System.out.println("ksdhfiu c");
 
 	}
 
