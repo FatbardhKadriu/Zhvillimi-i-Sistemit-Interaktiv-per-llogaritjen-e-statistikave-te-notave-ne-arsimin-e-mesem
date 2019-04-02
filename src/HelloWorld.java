@@ -6,7 +6,7 @@ public class HelloWorld extends Application
 	@Override
 	public void start(Stage primaryStage)
 	{
-		//
+		//koment
 	}
 	
 	public static void main(String[] args)
