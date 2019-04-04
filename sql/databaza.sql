@@ -22,3 +22,6 @@ edate date ,
 primary key(eid));
 
 drop table palidhje;
+
+create table palidhje(
+numri int primary key);
