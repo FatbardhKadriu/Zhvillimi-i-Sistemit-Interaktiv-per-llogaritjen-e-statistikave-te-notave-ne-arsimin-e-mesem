@@ -26,12 +26,6 @@ public class HelloWorld extends Application
 	        primaryStage.setScene(new Scene(root, 300, 250));
 	        primaryStage.show();
 	        
-	        Button button = new Button("Butoni");
-			button.setLayoutX(30);
-			button.setLayoutY(20);
-			
-			pane.getChildren().add(circle);
-			pane.getChildren().add(button);
 	    }
 	
 	public static void main(String[] args) {
