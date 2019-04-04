@@ -25,3 +25,7 @@ drop table palidhje;
 
 create table palidhje(
 numri int primary key);
+
+create table nota(
+notanepoo integer
+);
