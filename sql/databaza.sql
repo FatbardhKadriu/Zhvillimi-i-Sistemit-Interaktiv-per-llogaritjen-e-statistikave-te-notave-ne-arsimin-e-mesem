@@ -11,3 +11,82 @@ psurname varchar(20),
 pdate date ,
 primary key(pid));
 
+
+/* FATBARDHI */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /FATBARDHI */
+
+
+/* FATBARDHI2 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /FATBARDHI2 */
