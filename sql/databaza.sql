@@ -20,3 +20,5 @@ ename varchar(20),
 esurname varchar(20),
 edate date ,
 primary key(eid));
+
+drop table palidhje;
