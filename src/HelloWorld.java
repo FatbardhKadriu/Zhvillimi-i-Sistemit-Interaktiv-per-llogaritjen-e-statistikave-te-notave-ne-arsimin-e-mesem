@@ -22,6 +22,8 @@ public class HelloWorld extends Application
 	        });
 	        
 	        StackPane root = new StackPane();
+	        
+	        
 	        root.getChildren().add(btn);
 	        primaryStage.setScene(new Scene(root, 300, 250));
 	        primaryStage.show();
@@ -32,6 +34,8 @@ public class HelloWorld extends Application
 			
 			pane.getChildren().add(circle);
 			pane.getChildren().add(button);
+		
+			
 	    }
 	
 	public static void main(String[] args) {
