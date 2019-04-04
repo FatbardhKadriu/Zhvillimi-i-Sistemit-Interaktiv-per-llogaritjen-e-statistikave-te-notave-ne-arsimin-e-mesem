@@ -22,9 +22,23 @@ public class HelloWorld extends Application
 	        });
 	        
 	        StackPane root = new StackPane();
+	        
+	        
 	        root.getChildren().add(btn);
 	        primaryStage.setScene(new Scene(root, 300, 250));
 	        primaryStage.show();
+	        
+<<<<<<< HEAD
+	        Button button = new Button("Butoni");
+			button.setLayoutX(30);
+			button.setLayoutY(20);
+			
+			pane.getChildren().add(circle);
+			pane.getChildren().add(button);
+		
+			
+=======
+>>>>>>> e44c838679acac42e68154e3f502e825915bed90
 	    }
 	
 	public static void main(String[] args) {
