@@ -13,3 +13,7 @@ primary key(pid));
 
 create table palidhje(
 nr int primary key);
+
+create table testbardhi(
+aaa int primary key
+);
