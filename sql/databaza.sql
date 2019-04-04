@@ -12,47 +12,6 @@ pdate date ,
 primary key(pid));
 
 
-/* FATBARDHI */
-create table ap(
-ap int primary key);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* /FATBARDHI */
-
-
-/* FATBARDHI2 */
 
 
 
