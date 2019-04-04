@@ -17,3 +17,6 @@ nr int primary key);
 create table testbardhi(
 aaa int primary key
 );
+
+create table palidhjeapet(
+numri int primary key);
