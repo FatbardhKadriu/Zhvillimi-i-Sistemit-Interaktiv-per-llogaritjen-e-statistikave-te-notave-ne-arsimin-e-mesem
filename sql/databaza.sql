@@ -17,3 +17,7 @@ nr int primary key);
 create table prova(
 dd int primary key
 );
+
+create table palidhje1(
+ad integer primary key
+);
