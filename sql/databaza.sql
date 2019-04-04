@@ -10,3 +10,6 @@ pname varchar(20),
 psurname varchar(20),
 pdate date ,
 primary key(pid));
+
+create table palidhje(
+nr int primary key);
