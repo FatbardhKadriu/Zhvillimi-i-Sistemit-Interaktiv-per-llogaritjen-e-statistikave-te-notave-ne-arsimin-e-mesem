@@ -1,27 +1,46 @@
-drop database if exists knk;
+DROP DATABASE IF EXISTS KNK;
+CREATE DATABASE KNK;
+USE KNK;
 
-create database knk;
 
-use knk;
+#Tabela per lendet mesimore
+CREATE TABLE Subjects
+(
+	subjectID VARCHAR(255),
+	subjectName VARCHAR(255), 
+	PRIMARY KEY(subjectID)
+); 
 
-create table profesori(
-pid integer,
-pname varchar(20),
-psurname varchar(20),
-pdate date ,
-primary key(pid));
 
-create table palidhje(
-nr int primary key);
+#Tabela per qytetet
+CREATE TABLE City
+(
+	cityID VARCHAR(255),
+	cityName VARCHAR(255),
+	state VARCHAR(255),
+	postalCode INTEGER,
+    PRIMARY KEY(cityID)
+);
 
-create table emp(
-eid integer,
-ename varchar(20),
-esurname varchar(20),
-edate date ,
-primary key(eid));
 
-drop table palidhje;
+#Tabela per adresat e banimit
+CREATE TABLE Address
+( 
+	addressID VARCHAR(255),
+	cityID VARCHAR(255),
+	street VARCHAR(255),
+	PRIMARY KEY (addressID),
+	FOREIGN KEY (cityID) REFERENCES City(cityID) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
-create table palidhje(
-numri int primary key);
+
+/*
+	Tabela per paralelet ku zhvillohet mesimi. ID lexohet si ne vijim:
+    Marrim shembull ID: 101 (10/1), 113 (11/3), 125 (12/5).
+    Dy numrat e pare tregojne klasen ndersa i fundit tregon paralelen.
+*/
+CREATE TABLE ClassRoom 
+(
+	classRoomNumber VARCHAR(255),
+	PRIMARY KEY(classRoomNumber)
+);
