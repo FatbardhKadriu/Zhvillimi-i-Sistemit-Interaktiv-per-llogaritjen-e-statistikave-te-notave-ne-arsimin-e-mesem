@@ -243,3 +243,55 @@ CREATE TABLE OverAllSuccessFemales
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
+#Tabela per llogaritjen e statistikave te pergjithshme te studenteve te gjinise mashkullore.	
+CREATE TABLE OverAllSuccessMales
+(
+	classRoomNumber VARCHAR(255),
+    numberOfMales INTEGER,
+    excellentNumber INTEGER,
+    exceedsAcceptableNumber INTEGER,
+    acceptableNumber INTEGER,
+    belowAcceptableNumber INTEGER,
+    positiveResultNumber INTEGER,
+    positiveResultPercetange REAL,
+    failingNumber INTEGER,
+    failingPercentage REAL,
+    unGradedNumber INTEGER,
+    unGradedPercentage REAL,
+    malesAuthorised INTEGER,
+    malesUnAuthorised INTEGER,
+    malesTotalAbsence INTEGER,
+    PRIMARY KEY(classRoomNumber),
+    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+#Tabela per llogaritjen e statistikave te pergjithshme te studenteve.
+CREATE TABLE overallSucessStudents
+(
+	classRoomNumber VARCHAR(255),
+    positiveResultNumber INTEGER,
+    positiveResultPercetange REAL,
+    negativeResultNumber INTEGER,
+    negativeResultPercetange REAL,
+    authorisedTotal INTEGER,
+    unAuthorisedTotal INTEGER,
+    PRIMARY KEY(classRoomNumber),
+    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+#Tabela per oret mesimore te mbajtura.
+CREATE TABLE Classes
+(
+	subjectID VARCHAR(255),
+	teacherID VARCHAR(255),
+    classRoomNumber VARCHAR(255),
+	plannedHours INTEGER,
+	heldHours INTEGER,
+	PRIMARY KEY(subjectID, teacherID, classRoomNumber),
+	FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(teacherID) REFERENCES Teacher(teacherID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
+);
