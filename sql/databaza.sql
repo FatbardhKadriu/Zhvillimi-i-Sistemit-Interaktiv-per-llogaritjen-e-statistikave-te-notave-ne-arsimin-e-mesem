@@ -105,3 +105,51 @@ CREATE TABLE Grades
 	FOREIGN KEY(studentID) REFERENCES Student(studentID) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE
  );
+
+
+#Tabele per paraqitjen e notes perfundimtare te llogariture nga tre periodat (Nota vjetore).
+ CREATE TABLE finalGrade
+(	
+	studentID VARCHAR(255),
+    subjectID VARCHAR(255),
+    finalGrade REAL,
+    PRIMARY KEY(studentID, subjectID),
+    FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(studentID) REFERENCES Student(studentID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+#Tabela per te dhenat e mesimdheneseve.
+CREATE TABLE Teacher
+(
+	teacherID VARCHAR(255),
+	teacherName VARCHAR (20) NOT NULL,
+	teacherSurname VARCHAR(20) NOT NULL,
+	phoneNumber INTEGER,
+	email VARCHAR(40),
+    addressID VARCHAR(255),
+	subjectID VARCHAR(50),
+    PRIMARY KEY(teacherID),
+	FOREIGN KEY(addressID) REFERENCES Address(addressID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+#Tabela per te dhenat e vijueshmerise.
+CREATE TABLE Attendance
+(
+    studentID VARCHAR(255),
+	authorised INTEGER,
+    unauthorised INTEGER,
+    PRIMARY KEY(studentID),
+	FOREIGN KEY(studentID) REFERENCES Student(studentID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+#Krijimi i tabeles me mundesi pershkrimi per noten. P.s. 5 - Shkelqyeshem.
+CREATE TABLE gradeDescription 
+(
+	gradeID VARCHAR(255),
+	descriptionGrade VARCHAR(255),
+    PRIMARY KEY(gradeID)
+);
