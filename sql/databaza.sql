@@ -195,3 +195,51 @@ CREATE TABLE overallSucessSubjects
     PRIMARY KEY(subjectID),
     FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID)
 );
+
+
+#Tabela per statistikat e pergjithshme te seciles klase.
+CREATE TABLE overallSucessClass
+(
+	classRoomNumber VARCHAR(255),
+	totalExcellentNumber INTEGER,
+    totalExcellentPercentage REAL,
+    totalExceedsAcceptableNumber INTEGER,
+    totalExceedsAcceptablePercentage REAL,
+    totalAcceptableNumber INTEGER,
+    totalAcceptablePercentage REAL,
+    totalBelowAcceptableNumber INTEGER,
+    totalBelowAcceptablePercentage REAL,
+    totalPositiveResultNumber INTEGER,
+    totalPositiveResultPercetange REAL,
+    totalFailingNumber INTEGER,
+    totalFailingPercentage REAL,
+    totalUnGradedNumber INTEGER,
+    totalUnGradedPercentage REAL,
+    totalGPA REAL,
+    PRIMARY KEY(classRoomNumber),
+    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+#Tabela per llogaritjen e statistikave te pergjithshme te studenteve te gjinise femerore.
+CREATE TABLE OverAllSuccessFemales
+(
+	classRoomNumber VARCHAR(255),
+    numberOfFemales INTEGER,
+    excellentNumber INTEGER,
+    exceedsAcceptableNumber INTEGER,
+    acceptableNumber INTEGER,
+    belowAcceptableNumber INTEGER,
+    positiveResultNumber INTEGER,
+    positiveResultPercetange REAL,
+    failingNumber INTEGER,
+    failingPercentage REAL,
+    unGradedNumber INTEGER,
+    unGradedPercentage REAL,
+    femalesAuthorised INTEGER,
+    femalesUnAuthorised INTEGER,
+    femalesTotalAbsence INTEGER,
+    PRIMARY KEY(classRoomNumber),
+    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
