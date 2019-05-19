@@ -12,18 +12,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class llogaritKredine extends Application{
-	
+public class llogaritKredine extends Application
+{
 	private TextField tfShkallaEinteresitVjetor = new TextField();
 	private TextField tfNumriIviteve = new TextField();
 	private TextField tfShumaKredise = new TextField();
 	private TextField tfPagesaMujore = new TextField();
 	private TextField tfPagesaTotale = new TextField();
 	private Button btnKalkulo = new Button("Kalkulo");
-	
+
 	@Override
-	public void start(Stage primaryStage) {
-		
+	public void start(Stage primaryStage)
+	{
+
 		GridPane pane = new GridPane();
 		pane.setStyle("-fx-background-color:#006666");
 		pane.setPadding(new Insets(15, 15, 15, 15));
@@ -67,16 +68,17 @@ public class llogaritKredine extends Application{
 		primaryStage.setTitle("Kalkulimi i kredise");
 		primaryStage.show();
 	}
-	private void kalkuloPagesenEkredise() {
+
+	private void kalkuloPagesenEkredise()
+	{
 		Double interesi = Double.parseDouble(tfShkallaEinteresitVjetor.getText());
 		int vitet = Integer.parseInt(tfNumriIviteve.getText());
 		Double shumaKredise = Double.parseDouble(tfShumaKredise.getText());
 		Kredia kredi = new Kredia(interesi, vitet, shumaKredise);
 		tfPagesaMujore.setText(String.format("%.2f", kredi.getPagesaMujore()));
 		tfPagesaTotale.setText(String.format("%.2f", kredi.getPagesaTotale()));
-
 	}
-	
+
 	public static void main(String[] args)
 	{
 		Application.launch(args);
