@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -36,6 +37,7 @@ public class llogaritKredine extends Application
 		Label l4 = new Label("Pagesa mujore: ");
 		Label l5 = new Label("Pagesa totale: ");
 		l1.setFont(new Font(20));
+		l1.setTextFill(Color.WHITE);
 		l2.setFont(new Font(20));
 		l3.setFont(new Font(20));
 		l4.setFont(new Font(20));
