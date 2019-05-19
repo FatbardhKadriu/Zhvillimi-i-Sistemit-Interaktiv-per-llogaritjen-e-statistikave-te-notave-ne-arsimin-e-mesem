@@ -76,4 +76,9 @@ public class llogaritKredine extends Application{
 		tfPagesaTotale.setText(String.format("%.2f", kredi.getPagesaTotale()));
 
 	}
+	
+	public static void main(String[] args)
+	{
+		Application.launch(args);
+	}
 }
