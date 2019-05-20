@@ -280,8 +280,6 @@ CREATE TABLE overallSucessStudents
     PRIMARY KEY(classRoomNumber),
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
 #Tabela per oret mesimore te mbajtura.
 CREATE TABLE Classes
 (
@@ -294,4 +292,8 @@ CREATE TABLE Classes
 	FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(teacherID) REFERENCES Teacher(teacherID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);
+);    name varchar(255),
+    email varchar(255),
+    password varchar(255));
+
+insert into Administrator values('1','admin','admin@gmail.com','admin');
