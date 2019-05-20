@@ -292,7 +292,10 @@ CREATE TABLE Classes
 	FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(teacherID) REFERENCES Teacher(teacherID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);    name varchar(255),
+);
+Create table Administrator(
+	administratorID varchar(20) primary key,
+    name varchar(255),
     email varchar(255),
     password varchar(255));
 
