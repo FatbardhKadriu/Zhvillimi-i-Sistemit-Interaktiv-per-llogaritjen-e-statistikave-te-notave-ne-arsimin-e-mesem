@@ -16,9 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.sql.*;
 
-
-public class Login extends Application {
-	
+public class Login extends Application
+{
 	private Connection dbConnection;
 	private TextField username = new TextField();
 	private PasswordField password = new PasswordField();
@@ -28,6 +27,26 @@ public class Login extends Application {
 
 	public void start(Stage primaryStage)
 	{
+		setDBConnection();
 		
+		mainStage = primaryStage;
+		HBox hbox = new HBox(30);
+		VBox vbox = new VBox(20);
+		StackPane photoPane = new StackPane();
+		
+		ImageView schoolImage = new ImageView("images/school.jpg");
+		ImageView logoImage = new ImageView("images/logo.png");
+		logoImage.setFitHeight(300);
+		logoImage.setFitWidth(250);
+		photoPane.getChildren().add(schoolImage);
+		
+		StackPane logoPane = new StackPane();
+		logoPane.getChildren().add(logoImage);
+		
+		GridPane loginPane = new GridPane();
+		loginPane.addRow(0, new Label("Perdoruesi: "));
+		loginPane.addRow(0, username);
+		loginPane.addRow(1, new Label("Fjalekalimi: "));
+		loginPane.addRow(1, password);
 	}
 }
