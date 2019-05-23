@@ -65,4 +65,49 @@ public class Login extends Application
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
+	public void loginUser() {
+		String query = "Select * from Administrator where email = ? AND password = ?";
+		try {
+			PreparedStatement preparedStatement = dbConnection.prepareStatement(query);
+			//
+			preparedStatement.setString(1, username.getText());
+			preparedStatement.setString(2, password.getText());
+			
+			ResultSet result = preparedStatement.executeQuery();
+			
+			if(result.next()) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Logged in");
+				alert.setHeaderText(null);
+				alert.setContentText("You are log in!");
+				
+				alert.showAndWait();
+				
+//				mainStage.show();
+				mainStage.setScene(scene2);
+				
+//				System.exit(1);
+			}else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("User not found");
+				alert.setHeaderText(null);
+				alert.setContentText("Email or password not found!");
+				
+				alert.showAndWait();
+				
+//				System.exit(1);
+			}
+			
+		}
+		catch(SQLException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Database problem!");
+			alert.setHeaderText(null);
+			alert.setContentText("Cannot connect to database!");
+			
+			alert.showAndWait();
+			
+			System.exit(1);
+		}
+	}
 }
