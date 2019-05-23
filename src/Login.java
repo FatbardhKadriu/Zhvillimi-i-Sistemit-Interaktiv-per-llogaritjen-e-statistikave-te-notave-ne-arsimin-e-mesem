@@ -110,4 +110,25 @@ public class Login extends Application
 			System.exit(1);
 		}
 	}
+	private void setDBConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/knk", "root","root");	
+		}
+		catch(Exception e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Database problem!");
+			alert.setHeaderText(null);
+			alert.setContentText("Cannot connect to database!");
+			
+			alert.showAndWait();
+			
+			System.exit(1);
+		}
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
