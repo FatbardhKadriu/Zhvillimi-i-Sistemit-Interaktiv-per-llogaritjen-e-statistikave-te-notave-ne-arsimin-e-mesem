@@ -48,5 +48,21 @@ public class Login extends Application
 		loginPane.addRow(0, username);
 		loginPane.addRow(1, new Label("Fjalekalimi: "));
 		loginPane.addRow(1, password);
+		
+		loginPane.setAlignment(Pos.CENTER);
+		loginPane.setHalignment(btnDergo, HPos.CENTER);
+		btnDergo.setOnAction(e -> {
+			loginUser();
+		});
+		loginPane.add(btnDergo, 1, 2);
+		btnDergo.setStyle("-fx-background-color:red; -fx-text-fill: white; -fx-border-radius:20px;"); 
+		loginPane.setVgap(15);
+		vbox.getChildren().addAll(logoPane, loginPane);
+		hbox.setStyle("-fx-background-color:white");
+		hbox.getChildren().addAll(photoPane, vbox);
+		Scene scene = new Scene(hbox);
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
 	}
 }
