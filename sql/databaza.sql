@@ -11,7 +11,6 @@ CREATE TABLE Subjects
 	PRIMARY KEY(subjectID)
 ); 
 
-
 #Tabela per qytetet
 CREATE TABLE City
 (
@@ -44,6 +43,7 @@ CREATE TABLE ClassRoom
 	classRoomNumber VARCHAR(255),
 	PRIMARY KEY(classRoomNumber)
 );
+
 
 
 #Tabela per te dhenat e prinderve te nxeneseve.
@@ -221,52 +221,6 @@ CREATE TABLE overallSucessClass
 );
 
 
-#Tabela per llogaritjen e statistikave te pergjithshme te studenteve te gjinise femerore.
-CREATE TABLE OverAllSuccessFemales
-(
-	classRoomNumber VARCHAR(255),
-    numberOfFemales INTEGER,
-    excellentNumber INTEGER,
-    exceedsAcceptableNumber INTEGER,
-    acceptableNumber INTEGER,
-    belowAcceptableNumber INTEGER,
-    positiveResultNumber INTEGER,
-    positiveResultPercetange REAL,
-    failingNumber INTEGER,
-    failingPercentage REAL,
-    unGradedNumber INTEGER,
-    unGradedPercentage REAL,
-    femalesAuthorised INTEGER,
-    femalesUnAuthorised INTEGER,
-    femalesTotalAbsence INTEGER,
-    PRIMARY KEY(classRoomNumber),
-    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
-#Tabela per llogaritjen e statistikave te pergjithshme te studenteve te gjinise mashkullore.	
-CREATE TABLE OverAllSuccessMales
-(
-	classRoomNumber VARCHAR(255),
-    numberOfMales INTEGER,
-    excellentNumber INTEGER,
-    exceedsAcceptableNumber INTEGER,
-    acceptableNumber INTEGER,
-    belowAcceptableNumber INTEGER,
-    positiveResultNumber INTEGER,
-    positiveResultPercetange REAL,
-    failingNumber INTEGER,
-    failingPercentage REAL,
-    unGradedNumber INTEGER,
-    unGradedPercentage REAL,
-    malesAuthorised INTEGER,
-    malesUnAuthorised INTEGER,
-    malesTotalAbsence INTEGER,
-    PRIMARY KEY(classRoomNumber),
-    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
 #Tabela per llogaritjen e statistikave te pergjithshme te studenteve.
 CREATE TABLE overallSucessStudents
 (
@@ -306,4 +260,33 @@ CREATE TABLE Administrator
     password VARCHAR(255),
     PRIMARY KEY(administratorID));
 
-insert into Administrator values('1','admin','admin@gmail.com','admin');
+INSERT INTO Administrator VALUES 
+('1','admin','admin@gmail.com','admin');
+
+
+INSERT INTO Subjects VALUES
+('1000', 'Gjuhe Shqipe'),
+('1001', 'Gjuhe Angleze'),
+('1002', 'Gjuhe Gjermane'),
+('1003', 'Art Muzikor'),
+('1004', 'Art Figurativ'),
+('1005', 'Matematike'),
+('1006', 'Biologji'),
+('1007', 'Fizike'),
+('1008', 'Kimi'),
+('1009', 'Gjeografi'),
+('1010', 'Histori'),
+('1011', 'Edukate Fizike'),
+('1012', 'TIK'),
+('1013', 'Kultura dhe Shoqeria'),
+('1014', 'Ekologji');
+
+
+INSERT INTO ClassRoom VALUES
+('101'),
+('102'),
+('103'),
+('104'),
+('105'),
+('106');
+
