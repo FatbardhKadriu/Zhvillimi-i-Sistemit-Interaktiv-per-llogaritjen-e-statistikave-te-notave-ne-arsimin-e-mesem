@@ -290,3 +290,25 @@ INSERT INTO ClassRoom VALUES
 ('105'),
 ('106');
 
+
+INSERT INTO City VALUES
+('2000', 'Prishitne', 'Kosove', '10000'),
+('2001', 'Kline', 'Kosove', '32000'),
+('2002', 'Drenas', 'Kosove', '11000'),
+('2003', 'Istog', 'Kosove', '12000'),
+('2004', 'Gjakove', 'Kosove', '50000');
+
+
+INSERT INTO gradeDescription VALUES
+('5', 'Shkelqyeshem'),
+('4', 'Shume mire'),
+('3', 'Mire'),
+('2', 'Mjaftueshem'),
+('1', 'dobet');
+
+
+
+
+
+
+
