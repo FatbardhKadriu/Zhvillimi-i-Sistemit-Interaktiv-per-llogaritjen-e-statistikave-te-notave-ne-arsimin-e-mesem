@@ -3,6 +3,8 @@ package teacher;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -16,12 +18,25 @@ public class JavaFXMenu extends Application
 	@Override
 	public void start(Stage stage)
 	{
+
+		 
+
+	        
+
+	        
+	        
+	        Menu menu1 = new Menu("Menu 1");
+
+	        MenuBar menuBar = new MenuBar();
+
+	        menuBar.getMenus().add(menu1);
+		
 		BorderPane root = new BorderPane();
 		root.setLeft(Menu());
 		stage.setScene(new Scene(root));
 		stage.show();
 	}
-	
+		
 	private VBox Menu()
 	{
 		VBox vbox = new VBox();
@@ -67,7 +82,6 @@ public class JavaFXMenu extends Application
 			btn.setStyle("-fx-background-color: #333333");
 			pane.setStyle("-fx-background-color: #333333");
 		});
-		
 	}
 	
 	public static void main(String[] args)
