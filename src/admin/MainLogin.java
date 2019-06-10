@@ -26,6 +26,7 @@ public class MainLogin extends Application{
     private Connection connection;
 	private TextField email = new TextField();
 	private PasswordField password = new PasswordField();
+	private Label ErrorResult = new Label();
 	private Button btnLogin = new Button("Login");
 	private Label title = new Label("Login as Administrator");
 	private Scene scene2 = new Scene(new Label("Mirdita"));
@@ -39,6 +40,7 @@ public class MainLogin extends Application{
 		loginPane.addRow(0, new Label("Email"), email);
 		loginPane.addRow(1, new Label("Password"), password);
 		loginPane.add(btnLogin, 1, 3);
+		loginPane.add(ErrorResult, 1, 4);
 		loginPane.setHgap(35);
 		loginPane.setVgap(10);
 		loginPane.setHalignment(btnLogin, HPos.RIGHT);
@@ -52,6 +54,7 @@ public class MainLogin extends Application{
 		Scene scene = new Scene(pane, 500, 330);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		ErrorResult.getStyleClass().add("error");
 		btnLogin.getStyleClass().add("button-blue");
 		scene.getStylesheets().add("style.css");
 
@@ -83,14 +86,7 @@ public class MainLogin extends Application{
 				
 //				System.exit(1);
 			}else {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("User not found");
-				alert.setHeaderText(null);
-				alert.setContentText("Email or password not found!");
-				
-				alert.showAndWait();
-				
-//				System.exit(1);
+				ErrorResult.setText("Email or Password Incorrect");
 			}
 			
 		}
