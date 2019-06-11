@@ -5,7 +5,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-public class studentHelp {
+public class HelpAdminEn {
 
 	public static void about() {
 
@@ -15,7 +15,7 @@ public class studentHelp {
 
 		WebEngine webEngine = browser.getEngine();
 
-		String url = studentHelp.class.getResource("studenthelp.html").toExternalForm();
+		String url = HelpAdminEn.class.getResource("adminHelp-en.html").toExternalForm();
 
 		System.out.println("Local URL: " + url);
 		
@@ -23,9 +23,15 @@ public class studentHelp {
 
 		Scene sc = new Scene(browser, 800, 500);
 
-		helpAboutStage.setTitle("Student - Help");
+		helpAboutStage.setTitle("Help");
 		helpAboutStage.setScene(sc);
 
 		helpAboutStage.show();
 	}
+
 }
+
+
+
+
+

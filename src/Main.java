@@ -11,7 +11,8 @@ import admin.StudentsPanel;
 import admin.StudentsPanel;
 import admin.TeachersPanel;
 import admin.TeachersTable;
-import student.StudentLogin;;
+import student.StudentLogin;
+import teacher.TeacherLogin;
 
 public class Main extends Application{
 	
@@ -41,7 +42,7 @@ public class Main extends Application{
 			MainLogin.createStage();
 		});
 		teacher.setOnAction(e -> {
-			//
+			TeacherLogin.createStage();
 		});
 		student.setOnAction(e -> {
 			StudentLogin.createStage();
@@ -55,6 +56,4 @@ public class Main extends Application{
 		primaryStage.setTitle("Main");
 		primaryStage.show();
 	}
-	
-
 }

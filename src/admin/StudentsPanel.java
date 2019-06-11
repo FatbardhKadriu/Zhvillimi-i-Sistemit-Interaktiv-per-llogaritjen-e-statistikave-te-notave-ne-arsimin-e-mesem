@@ -172,6 +172,13 @@ public class StudentsPanel {
 				password.setText(row.getItem().getPassword());
 				adminSetAllEnable();
 				studentID.setDisable(true);
+				pane.setOnKeyPressed(ev -> {
+					if(ev.getCode() == KeyCode.D)
+					{
+						deleteStudents();
+					}
+				});
+
 			});
 			return row;
 		});
@@ -247,15 +254,18 @@ public class StudentsPanel {
 		btnDelete.setOnAction(e -> {
 			deleteStudents();
 		});
+
 		btnAddNew.setOnAction(e -> {
 			adminSetAllEnable();
 		});
 
-		btnAddNew.setOnKeyPressed(e -> {
+
+		pane.setOnKeyPressed(e -> 
 			if (e.getCode() == KeyCode.A) {
 				adminSetAllEnable();
 			}
 		});
+
 		HBox hbox5 = new HBox();
 
 		hbox5.getChildren().addAll(btnClear, btnSave);
