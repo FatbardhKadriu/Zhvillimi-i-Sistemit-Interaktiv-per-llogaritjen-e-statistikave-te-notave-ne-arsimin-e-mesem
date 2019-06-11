@@ -47,6 +47,7 @@ public class StudentsPanel {
 
 	public static void createStage() {
 
+		BorderPane pane = new BorderPane();
 		Stage stage = new Stage();
 
 		VBox vboxMain = new VBox();
@@ -63,6 +64,9 @@ public class StudentsPanel {
 
 		MenuItem itmCourse = new MenuItem("Course Panel");
 		MenuItem itmTeacher = new MenuItem("Teacher Panel");
+		itmTeacher.setOnAction(e -> {
+			TeachersPanel.createStage();
+		});
 
 		Menu help = new Menu("Help");
 
@@ -161,7 +165,7 @@ public class StudentsPanel {
 		btnDelete.setStyle("-fx-background-color:red;-fx-text-fill:white;");
 		VBox vbox2 = new VBox();
 		Label label_1 = new Label("Student Registration Details");
-		label_1.setStyle("-fx-text-fill:#4682B4;-fx-font-weight:bold;-fx-font-size:14;");
+		label_1.setStyle("-fx-text-fill:#4682B4;-fx-font-weight:bold;-fx-font-size:22;");
 		label_1.setPadding(new Insets(2, 18, 1, 25));
 		hbox.getChildren().addAll(btnAddNew, btnEdit, btnDelete);
 		hbox.setPadding(new Insets(10, 10, 10, 27));
@@ -170,7 +174,7 @@ public class StudentsPanel {
 		vbox2.getChildren().add(label_1);
 
 		Label label_2 = new Label("Personal Information");
-		label_2.setStyle("-fx-text-fill:#800080;-fx-font-weight:bold;-fx-font-size:14;");
+		label_2.setStyle("-fx-text-fill:#800080;-fx-font-weight:bold;-fx-font-size:18;");
 		label_2.setPadding(new Insets(4, 1, 1, 4));
 
 		GridPane gridPane1 = new GridPane();
@@ -240,9 +244,11 @@ public class StudentsPanel {
 		adminSetAllDisable();
 		HBox mainPane = new HBox(50);
 		mainPane.getChildren().addAll(vboxMain, studentsTable);
-		Scene scene = new Scene(mainPane);
+		pane.setTop(menuBar);
+		pane.setBottom(mainPane);
+		Scene scene = new Scene(pane);
 
-		stage.setTitle("Admin Panel");
+		stage.setTitle("Students Panel");
 		stage.setScene(scene);
 		stage.show();
 	}

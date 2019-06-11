@@ -65,7 +65,6 @@ public class MainLogin extends Application{
 			
             connection = database.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			//hahahha
 			preparedStatement.setString(1, email.getText());
 			preparedStatement.setString(2, password.getText());
 			
