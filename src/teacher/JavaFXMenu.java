@@ -20,16 +20,17 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import menu.MainMenu;
 
-public class JavaFXMenu extends Application
+public class JavaFXMenu
 {
 	private BorderPane root = new BorderPane();
 	private TabPane tabPane = new TabPane();
 	List<Tab> openTabs = new ArrayList<>();
 	SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
-
-	@Override
-	public void start(Stage stage)
+	
+	public void createStage()
 	{
+		Stage stage = new Stage();
+		
 		MenuBar menuBar = new MenuBar();
 		Menu menu1 = new Menu("Menu 1");
 		menuBar.getMenus().add(menu1);
@@ -162,9 +163,9 @@ public class JavaFXMenu extends Application
 			pane.setStyle("-fx-background-color: #CCCCCC");
 		});
 	}
-
+	
 	public static void main(String[] args)
 	{
-		launch(args);
+		
 	}
 }
