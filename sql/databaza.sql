@@ -44,27 +44,11 @@ CREATE TABLE ClassRoom
 	PRIMARY KEY(classRoomNumber)
 );
 
-
-
-#Tabela per te dhenat e prinderve te nxeneseve.
-CREATE TABLE Parents
-(
-	parentID VARCHAR(255),
-	parentName VARCHAR(15),
-	parentSurname VARCHAR(15),
-	parentEmail	VARCHAR(15),
-	parentPhoneNumber INTEGER,
-	parentJob VARCHAR(20),
-	PRIMARY KEY(parentID)
-);
-
-
 #Tabela per studentet (nxenesit)
 CREATE TABLE Student
 (
 	studentID VARCHAR(255),
     studentName VARCHAR(255),
-    parentID VARCHAR(255),
     studentSurname VARCHAR(255),
     gender CHAR(1),
     phoneNumber VARCHAR(255),
@@ -74,12 +58,11 @@ CREATE TABLE Student
     birthDate DATE,
     age INTEGER,
     PRIMARY KEY(studentID),
-    FOREIGN KEY(parentID) REFERENCES Parents(parentID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(addressID) REFERENCES Address(addressID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
+insert into student(studentID) values (170714100046);
 /*
 	Tabela per notat ne nje periode te caktuare. 
     Vleresimi behet duke llogaritur noten ne dy pjese bazuar ne angazhimet e meposhtme. 
