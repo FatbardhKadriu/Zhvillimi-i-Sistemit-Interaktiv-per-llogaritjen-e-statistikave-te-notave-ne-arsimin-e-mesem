@@ -18,6 +18,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -232,6 +233,12 @@ public class StudentsPanel {
 		});
 		btnAddNew.setOnAction(e -> {
 			adminSetAllEnable();
+		});
+		
+		btnAddNew.setOnKeyPressed(e -> {
+			if(e.getCode() == KeyCode.A) {
+				adminSetAllEnable();
+			} 
 		});
 		HBox hbox5 = new HBox();
 
