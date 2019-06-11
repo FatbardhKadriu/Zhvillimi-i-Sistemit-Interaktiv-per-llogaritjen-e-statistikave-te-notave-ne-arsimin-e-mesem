@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -38,6 +39,7 @@ public class StudentsPanel {
 	private static TextField gender = new TextField();
 	private static TextField phoneNumber = new TextField();
 	private static TextField email = new TextField();
+	private static PasswordField password = new PasswordField();
 	private static TextField classRoomNumber = new TextField();
 	private static TextField addressID = new TextField();
 	private static TextField birthDate = new TextField();
@@ -103,22 +105,26 @@ public class StudentsPanel {
 		TableColumn<String, StudentsTable> column6 = new TableColumn<>("Email");
 		column6.setCellValueFactory(new PropertyValueFactory("email"));
 		column6.setPrefWidth(120);
-
-		TableColumn<String, StudentsTable> column7 = new TableColumn<>("Class");
-		column7.setCellValueFactory(new PropertyValueFactory("classRoomNumber"));
+		
+		TableColumn<String, StudentsTable> column7 = new TableColumn<>("Password");
+		column7.setCellValueFactory(new PropertyValueFactory("password"));
 		column7.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column8 = new TableColumn<>("Address ID");
-		column8.setCellValueFactory(new PropertyValueFactory("addressID"));
+		TableColumn<String, StudentsTable> column8 = new TableColumn<>("Class");
+		column8.setCellValueFactory(new PropertyValueFactory("classRoomNumber"));
 		column8.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column9 = new TableColumn<>("Birthday");
-		column9.setCellValueFactory(new PropertyValueFactory("birthDate"));
+		TableColumn<String, StudentsTable> column9 = new TableColumn<>("Address ID");
+		column9.setCellValueFactory(new PropertyValueFactory("addressID"));
 		column9.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column10 = new TableColumn<>("Age");
-		column10.setCellValueFactory(new PropertyValueFactory("age"));
+		TableColumn<String, StudentsTable> column10 = new TableColumn<>("Birthday");
+		column10.setCellValueFactory(new PropertyValueFactory("birthDate"));
 		column10.setPrefWidth(120);
+
+		TableColumn<Integer, StudentsTable> column11 = new TableColumn<>("Age");
+		column11.setCellValueFactory(new PropertyValueFactory("age"));
+		column1.setPrefWidth(120);
 
 		studentsTable.getColumns().add(column1);
 		studentsTable.getColumns().add(column2);
@@ -130,6 +136,7 @@ public class StudentsPanel {
 		studentsTable.getColumns().add(column8);
 		studentsTable.getColumns().add(column9);
 		studentsTable.getColumns().add(column10);
+		studentsTable.getColumns().add(column11);
 
 		studentsTable.setRowFactory(tv -> {
 			TableRow<StudentsTable> row = new TableRow<>();
@@ -145,6 +152,7 @@ public class StudentsPanel {
 				addressID.setText(String.valueOf(row.getItem().getAddressID()));
 				birthDate.setText(String.valueOf(row.getItem().getBirthDate()));
 				age.setText(String.valueOf(row.getItem().getAge()));
+				password.setText(row.getItem().getPassword());
 				adminSetAllEnable();
 				studentID.setDisable(true);
 			});
@@ -190,14 +198,16 @@ public class StudentsPanel {
 		gridPane1.addRow(4, phoneNumber);
 		gridPane1.addRow(5, new Label("Email"));
 		gridPane1.addRow(5, email);
-		gridPane1.addRow(6, new Label("Class Room"));
-		gridPane1.addRow(6, classRoomNumber);
-		gridPane1.addRow(7, new Label("Address ID"));
-		gridPane1.addRow(7, addressID);
-		gridPane1.addRow(8, new Label("BirthDate"));
-		gridPane1.addRow(8, birthDate);
-		gridPane1.addRow(9, new Label("Age"));
-		gridPane1.addRow(9, age);
+		gridPane1.addRow(6, new Label("Password"));
+		gridPane1.addRow(6, password);
+		gridPane1.addRow(7, new Label("Class Room"));
+		gridPane1.addRow(7, classRoomNumber);
+		gridPane1.addRow(8, new Label("Address ID"));
+		gridPane1.addRow(8, addressID);
+		gridPane1.addRow(9, new Label("BirthDate"));
+		gridPane1.addRow(9, birthDate);
+		gridPane1.addRow(10, new Label("Age"));
+		gridPane1.addRow(10, age);
 
 		gridPane1.setPadding(new Insets(4, 12, 4, 22));
 
@@ -250,6 +260,7 @@ public class StudentsPanel {
 
 		stage.setTitle("Students Panel");
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 
@@ -268,7 +279,7 @@ public class StudentsPanel {
 	public static void insertStudents() {
 
 		if (StudentsTable.addStudents(studentID.getText(), studentName.getText(), studentSurname.getText(),
-				gender.getText(), phoneNumber.getText(), email.getText(), classRoomNumber.getText(),
+				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(),  classRoomNumber.getText(),
 				addressID.getText(), birthDate.getText(), Integer.parseInt(age.getText()))) {
 			showStudents();
 			clearForm();
@@ -284,7 +295,7 @@ public class StudentsPanel {
 
 	private static void updateStudents() {
 		if (StudentsTable.updateStudents(studentID.getText(), studentName.getText(), studentSurname.getText(),
-				gender.getText(), phoneNumber.getText(), email.getText(), classRoomNumber.getText(),
+				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(), classRoomNumber.getText(),
 				addressID.getText(), birthDate.getText(), Integer.parseInt(age.getText()))) {
 			showStudents();
 			clearForm();
@@ -302,6 +313,7 @@ public class StudentsPanel {
 		addressID.setText("");
 		birthDate.setText("");
 		age.setText("");
+		password.setText("");
 	}
 
 	private static void adminSetAllEnable() {
@@ -311,6 +323,7 @@ public class StudentsPanel {
 		gender.setDisable(false);
 		phoneNumber.setDisable(false);
 		email.setDisable(false);
+		password.setDisable(false);
 		classRoomNumber.setDisable(false);
 		addressID.setDisable(false);
 		birthDate.setDisable(false);
@@ -324,6 +337,7 @@ public class StudentsPanel {
 		gender.setDisable(true);
 		phoneNumber.setDisable(true);
 		email.setDisable(true);
+		password.setDisable(true);
 		classRoomNumber.setDisable(true);
 		addressID.setDisable(true);
 		birthDate.setDisable(true);
