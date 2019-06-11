@@ -13,13 +13,14 @@ public class StudentsTable {
 	private String gender;
 	private String phoneNumber;
 	private String email;
+	private String password;
 	private String classRoomNumber;
 	private String addressID;
 	private String birthDate;
 	private int age;
 
 	public StudentsTable(String studentID, String studentName, String studentSurname, String gender, String phoneNumber,
-			String email, String classRoomNumber, String addressID, String birthDate, int age) {
+			String email,String password, String classRoomNumber, String addressID, String birthDate, int age) {
 		super();
 		this.studentID = studentID;
 		this.studentName = studentName;
@@ -31,8 +32,15 @@ public class StudentsTable {
 		this.addressID = addressID;
 		this.birthDate = birthDate;
 		this.age = age;
+		this.password = password;
+	}
+	public String getPassword() {
+		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getStudentID() {
 		return studentID;
 	}
@@ -114,9 +122,9 @@ public class StudentsTable {
 	}
 
 	public static boolean addStudents(String studentID, String studentName, String studentSurname, String gender,
-			String phoneNumber, String email, String classRoomNumber, String addressID, String birthDate, int age) {
-		String query = "INSERT INTO Student(studentID, studentName, studentSurname, gender, phoneNumber, email, classRoomNumber, addressID, "
-				+ "birthDate,age) VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String phoneNumber, String email,String password, String classRoomNumber, String addressID, String birthDate, int age) {
+		String query = "INSERT INTO Student(studentID, studentName, studentSurname, gender, phoneNumber, email, password, classRoomNumber, addressID, "
+				+ "birthDate,age) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
 
@@ -126,10 +134,11 @@ public class StudentsTable {
 			preparedStatement.setString(4, gender);
 			preparedStatement.setString(5, phoneNumber);
 			preparedStatement.setString(6, email);
-			preparedStatement.setString(7, classRoomNumber);
-			preparedStatement.setString(8, addressID);
-			preparedStatement.setString(9, birthDate);
-			preparedStatement.setInt(10, age);
+			preparedStatement.setString(7, password);
+			preparedStatement.setString(8, classRoomNumber);
+			preparedStatement.setString(9, addressID);
+			preparedStatement.setString(10, birthDate);
+			preparedStatement.setInt(11, age);
 
 			return (preparedStatement.executeUpdate() > 0);
 		} catch (SQLException ex) {
@@ -139,8 +148,8 @@ public class StudentsTable {
 	}
 
 	public static boolean updateStudents(String studentID, String studentName, String studentSurname, String gender,
-			String phoneNumber, String email, String classRoomNumber, String addressID, String birthDate, int age) {
-		String query = "UPDATE student SET studentName=?, studentSurname=?, gender=?, phoneNumber=?, email=?, classRoomNumber=?,"
+			String phoneNumber, String email,String password,  String classRoomNumber, String addressID, String birthDate, int age) {
+		String query = "UPDATE student SET studentName=?, studentSurname=?, gender=?, phoneNumber=?, email=?, password=?,  classRoomNumber=?,"
 				+ "addressID=?, birthDate=?, age=? WHERE studentID=?";
 
 		try {
@@ -151,11 +160,12 @@ public class StudentsTable {
 			preparedStatement.setString(3, gender);
 			preparedStatement.setString(4, phoneNumber);
 			preparedStatement.setString(5, email);
-			preparedStatement.setString(6, classRoomNumber);
-			preparedStatement.setString(7, addressID);
-			preparedStatement.setString(8, birthDate);
-			preparedStatement.setInt(9, age);
-			preparedStatement.setString(10, studentID);
+			preparedStatement.setString(6, password);
+			preparedStatement.setString(7, classRoomNumber);
+			preparedStatement.setString(8, addressID);
+			preparedStatement.setString(9, birthDate);
+			preparedStatement.setInt(10, age);
+			preparedStatement.setString(11, studentID);
 
 			return (preparedStatement.executeUpdate() > 0);
 		} catch (SQLException ex) {
@@ -190,7 +200,7 @@ public class StudentsTable {
 			while (resultSet.next()) {
 				StudentsTable students = new StudentsTable(resultSet.getString(1), resultSet.getString(2),
 						resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-						resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getInt(10));
+						resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getInt(11));
 				studentList.add(students);
 			}
 		} catch (SQLException ex) {

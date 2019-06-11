@@ -1,4 +1,4 @@
-package admin;
+package student;
 
 import database.DBConnection;
 import java.sql.Connection;
@@ -20,13 +20,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MainLogin {
+public class StudentLogin {
 
 	private static TextField email = new TextField();
 	private static PasswordField password = new PasswordField();
 	private static Label ErrorResult = new Label();
 	private static Button btnLogin = new Button("Login");
-	private static Label title = new Label("Login as Administrator");
+	private static Label title = new Label("Login as Student");
 	private static Stage mainStage;
 
 	public static void createStage() {
@@ -43,7 +43,7 @@ public class MainLogin {
 		loginPane.setHalignment(btnLogin, HPos.RIGHT);
 		loginPane.setAlignment(Pos.CENTER);
 		btnLogin.setOnAction(e -> {
-			loginAdmin();
+			loginStudent();
 		});
 		pane.getChildren().addAll(title, loginPane);
 		title.getStyleClass().add("title");
@@ -57,8 +57,8 @@ public class MainLogin {
 
 	}
 
-	public static void loginAdmin() {
-		String query = "Select * from Administrator where email = ? AND password = ?";
+	public static void loginStudent() {
+		String query = "Select * from Student where email = ? AND password = ?";
 		try {
 
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
@@ -76,8 +76,9 @@ public class MainLogin {
 				alert.showAndWait();
 
 //				mainStage.show();
-				mainStage.hide();
-				StudentsPanel.createStage();
+//				mainStage.hide();
+//				StudentsPanel.createStage();
+				System.out.println("Jeni kyqur me sukses");
 
 //				System.exit(1);
 			} else {
