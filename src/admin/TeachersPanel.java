@@ -1,6 +1,8 @@
 package admin;
 
 import java.util.List;
+
+import Help.AdminHelp;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +19,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -57,21 +60,37 @@ public class TeachersPanel {
 		Menu file = new Menu("File");
 
 		MenuItem itmClose = new MenuItem("Close");
+		itmClose.setOnAction(e->{
+			stage.hide();
+		});
 
 		Menu edit = new Menu("Edit");
 
-		MenuItem itmCourse = new MenuItem("Course Panel");
-		MenuItem itmTeacher = new MenuItem("Teacher Panel");
-		itmTeacher.setOnAction(e -> {
-//			TeachersPanel.createStage();
-		});
+		MenuItem itmStudents = new MenuItem("Students Panel");
+
+		
 
 		Menu help = new Menu("Help");
 
 		MenuItem itmAbout = new MenuItem("About");
+		itmAbout.setOnAction(e->{
+			AdminHelp.about();
+			
+		});
+		pane.setOnKeyPressed(e->{
+			if(e.getCode() == KeyCode.F1)
+			{
+				AdminHelp.about();
+				
+			}
+			if(e.isAltDown() && e.getCode() == KeyCode.F4)
+			{
+				stage.hide();
+			}
+		});
 
 		file.getItems().addAll(itmClose);
-		edit.getItems().addAll(itmCourse, itmTeacher);
+		edit.getItems().addAll(itmStudents);
 		help.getItems().addAll(itmAbout);
 
 		menuBar.getMenus().addAll(file, edit, help);
