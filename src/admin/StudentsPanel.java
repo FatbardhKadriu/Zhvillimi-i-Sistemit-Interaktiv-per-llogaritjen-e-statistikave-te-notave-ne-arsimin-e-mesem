@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import Help.Help;
 
 public class StudentsPanel {
 	private static Label studentLabel = new Label("Student Registration Details");
@@ -70,10 +71,16 @@ public class StudentsPanel {
 		itmTeacher.setOnAction(e -> {
 			TeachersPanel.createStage();
 		});
+		MenuItem itmAbout = new MenuItem("About");
 
 		Menu help = new Menu("Help");
+		pane.setOnKeyPressed(e -> {
+				if(e.getCode() == KeyCode.F1) {
+						Help.about();
+				}
+		} );
 
-		MenuItem itmAbout = new MenuItem("About");
+		
 
 		file.getItems().addAll(itmClose);
 		edit.getItems().addAll(itmCourse, itmTeacher);
