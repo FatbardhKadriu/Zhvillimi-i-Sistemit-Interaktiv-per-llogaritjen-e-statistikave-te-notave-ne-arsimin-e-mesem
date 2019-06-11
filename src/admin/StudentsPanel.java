@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import Help.AdminHelp;
 import Help.studentHelp;
 
 public class StudentsPanel {
@@ -80,16 +81,18 @@ public class StudentsPanel {
 		});
 
 		Menu help = new Menu("Help");
-		pane.setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.F1) {
+		pane.setOnKeyPressed(e->{
+			if(e.getCode() == KeyCode.F1)
+			{
 				studentHelp.about();
+				
 			}
-			
 			if(e.isAltDown() && e.getCode() == KeyCode.F4)
 			{
 				stage.hide();
 			}
 		});
+
 
 		file.getItems().addAll(itmClose);
 		edit.getItems().addAll(itmTeacher);
