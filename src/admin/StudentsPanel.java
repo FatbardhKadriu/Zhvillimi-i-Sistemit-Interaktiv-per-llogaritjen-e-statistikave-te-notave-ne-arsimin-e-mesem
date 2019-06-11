@@ -259,12 +259,13 @@ public class StudentsPanel {
 			adminSetAllEnable();
 		});
 
-
-		pane.setOnKeyPressed(e -> 
-			if (e.getCode() == KeyCode.A) {
+		pane.setOnKeyPressed(e -> {
+			if(e.getCode() == KeyCode.A)
+			{
 				adminSetAllEnable();
 			}
 		});
+		
 
 		HBox hbox5 = new HBox();
 
