@@ -13,6 +13,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -209,6 +210,12 @@ public class GradesTab
 				markPart1Txt.setDisable(true);
 				markPart2Txt.setDisable(true);
 				finalPeriodMarkTxt.setDisable(true);
+				deleteBtn.setOnKeyPressed(ev -> {
+					if(ev.isControlDown() && ev.getCode() == KeyCode.D)
+					{
+						deleteGrade();
+					}
+				});
 			});
 
 			return row;

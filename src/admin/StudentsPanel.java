@@ -173,7 +173,7 @@ public class StudentsPanel {
 				adminSetAllEnable();
 				studentID.setDisable(true);
 				pane.setOnKeyPressed(ev -> {
-					if(ev.getCode() == KeyCode.D)
+					if(ev.isControlDown() && ev.getCode() == KeyCode.D)
 					{
 						deleteStudents();
 					}
