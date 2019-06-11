@@ -52,6 +52,7 @@ public class Main extends Application{
 		pane.getChildren().addAll(admin, teacher, student);
 		pane.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(pane, 600, 300);
+		pane.setStyle("-fx-background-image: url(images/main-background.jpg)");
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Main");
 		primaryStage.show();
