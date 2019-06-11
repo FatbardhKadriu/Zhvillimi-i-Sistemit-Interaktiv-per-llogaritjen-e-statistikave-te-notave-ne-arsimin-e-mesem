@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -55,8 +56,15 @@ public class MainLogin {
 		btnLogin.getStyleClass().add("button-blue");
 		scene.getStylesheets().add("style.css");
 
+		pane.setOnKeyPressed(e-> {
+			if(e.getCode() == KeyCode.ENTER) {
+				loginAdmin();
+			}
+		});
+
 	}
 
+	
 	public static void loginAdmin() {
 		String query = "Select * from Administrator where email = ? AND password = ?";
 		try {
