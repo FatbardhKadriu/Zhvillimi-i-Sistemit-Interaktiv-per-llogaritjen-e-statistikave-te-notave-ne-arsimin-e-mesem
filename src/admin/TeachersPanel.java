@@ -41,6 +41,7 @@ public class TeachersPanel {
 	private static TextField teacherSurname = new TextField();
 	private static TextField phoneNumber = new TextField();
 	private static TextField email = new TextField();
+	private static TextField password = new TextField();
 	private static TextField addressID = new TextField();
 	private static TextField subjectID = new TextField();
 
@@ -116,12 +117,16 @@ public class TeachersPanel {
 		TableColumn<String, TeachersTable> column5 = new TableColumn<>("Email");
 		column5.setCellValueFactory(new PropertyValueFactory("email"));
 		column5.setPrefWidth(120);
+		
+		TableColumn<String, TeachersTable> column6 = new TableColumn<>("Password");
+		column5.setCellValueFactory(new PropertyValueFactory("password"));
+		column5.setPrefWidth(120);
 
-		TableColumn<String, TeachersTable> column6 = new TableColumn<>("Address ID");
+		TableColumn<String, TeachersTable> column7 = new TableColumn<>("Address ID");
 		column6.setCellValueFactory(new PropertyValueFactory("addressID"));
 		column6.setPrefWidth(120);
 
-		TableColumn<String, TeachersTable> column7 = new TableColumn<>("Subject ID");
+		TableColumn<String, TeachersTable> column8 = new TableColumn<>("Subject ID");
 		column7.setCellValueFactory(new PropertyValueFactory("subjectID"));
 		column7.setPrefWidth(120);
 
@@ -132,6 +137,7 @@ public class TeachersPanel {
 		teachersTable.getColumns().add(column5);
 		teachersTable.getColumns().add(column6);
 		teachersTable.getColumns().add(column7);
+		teachersTable.getColumns().add(column8);
 
 		teachersTable.setRowFactory(tv -> {
 			TableRow<TeachersTable> row = new TableRow<>();
@@ -142,6 +148,7 @@ public class TeachersPanel {
 				teacherSurname.setText(row.getItem().getTeacherSurname());
 				phoneNumber.setText(String.valueOf(row.getItem().getPhoneNumber()));
 				email.setText(String.valueOf(row.getItem().getEmail()));
+				password.setText(String.valueOf(row.getItem().getPassword()));
 				addressID.setText(String.valueOf(row.getItem().getAddressID()));
 				subjectID.setText(String.valueOf(row.getItem().getSubjectID()));
 				adminSetAllEnable();
@@ -187,6 +194,8 @@ public class TeachersPanel {
 		gridPane1.addRow(3, phoneNumber);
 		gridPane1.addRow(4, new Label("Email"));
 		gridPane1.addRow(4, email);
+		gridPane1.addRow(4, new Label("Password"));
+		gridPane1.addRow(4, password);
 		gridPane1.addRow(5, new Label("Address ID"));
 		gridPane1.addRow(5, addressID);
 		gridPane1.addRow(6, new Label("Subject ID"));
@@ -262,7 +271,7 @@ public class TeachersPanel {
 	public static void insertTeachers() {
 
 		if (TeachersTable.addTeachers(teacherID.getText(), teacherName.getText(), teacherSurname.getText(),
-				phoneNumber.getText(), email.getText(), addressID.getText(), subjectID.getText())) {
+				phoneNumber.getText(), email.getText(), password.getText(), addressID.getText(), subjectID.getText())) {
 			showTeachers();
 			clearForm();
 		}
@@ -277,7 +286,7 @@ public class TeachersPanel {
 
 	private static void updateTeachers() {
 		if (TeachersTable.updateTeachers(teacherID.getText(), teacherName.getText(), teacherSurname.getText(),
-				phoneNumber.getText(), email.getText(), addressID.getText(), subjectID.getText())) {
+				phoneNumber.getText(), email.getText(), password.getText(), addressID.getText(), subjectID.getText())) {
 			showTeachers();
 			clearForm();
 		}
@@ -289,6 +298,7 @@ public class TeachersPanel {
 		teacherSurname.setText("");
 		phoneNumber.setText("");
 		email.setText("");
+		password.setText("");
 		addressID.setText("");
 		subjectID.setText("");
 	}
@@ -299,6 +309,7 @@ public class TeachersPanel {
 		teacherSurname.setDisable(false);
 		phoneNumber.setDisable(false);
 		email.setDisable(false);
+		password.setDisable(false);
 		addressID.setDisable(false);
 		subjectID.setDisable(false);
 
@@ -310,9 +321,9 @@ public class TeachersPanel {
 		teacherSurname.setDisable(true);
 		phoneNumber.setDisable(true);
 		email.setDisable(true);
+		password.setDisable(true);
 		addressID.setDisable(true);
 		subjectID.setDisable(true);
-
 	}
 
 }

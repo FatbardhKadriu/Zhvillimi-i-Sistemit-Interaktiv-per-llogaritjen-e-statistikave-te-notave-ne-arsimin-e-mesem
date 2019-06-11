@@ -110,6 +110,7 @@ CREATE TABLE Teacher
 	teacherSurname VARCHAR(20) NOT NULL,
 	phoneNumber INTEGER,
 	email VARCHAR(40),
+    password VARCHAR(255),
     addressID VARCHAR(255),
 	subjectID VARCHAR(50),
     PRIMARY KEY(teacherID),
@@ -188,7 +189,6 @@ CREATE VIEW finalPeriodMark AS
 SELECT studentID, subjectID, SUM(finalPeriodMark) / 3 AS 'finalPeriodMark'
 FROM Grades 
 GROUP BY studentID;
-
 select * from finalPeriodMark;
 
 -- CREATE VIEW StudentsGPA AS

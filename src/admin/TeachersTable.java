@@ -12,10 +12,11 @@ public class TeachersTable {
 	private String teacherSurname;
 	private String phoneNumber;
 	private String email;
+	private String password;
 	private String addressID;
 	private String subjectID;
 
-	public TeachersTable(String teacherID, String teacherName, String teacherSurname, String phoneNumber, String email,
+	public TeachersTable(String teacherID, String teacherName, String teacherSurname, String phoneNumber, String email, String password,
 			String addressID, String subjectID) {
 		super();
 		this.teacherID = teacherID;
@@ -23,6 +24,7 @@ public class TeachersTable {
 		this.teacherSurname = teacherSurname;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.password = password;
 		this.addressID = addressID;
 		this.subjectID = subjectID;
 	}
@@ -66,6 +68,14 @@ public class TeachersTable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getAddressID() {
 		return addressID;
@@ -84,7 +94,7 @@ public class TeachersTable {
 	}
 
 	public static boolean addTeachers(String teacherID, String teacherName, String teacherSurname, String phoneNumber,
-			String email, String addressID, String subjectID) {
+			String email, String password, String addressID, String subjectID) {
 		String query = "INSERT INTO Teacher(teacherID, teacherName, teacherSurname, phoneNumber, email, addressID, subjectID)"
 				+ "VALUES(?,?,?,?,?,?,?)";
 		try {
@@ -95,8 +105,9 @@ public class TeachersTable {
 			preparedStatement.setString(3, teacherSurname);
 			preparedStatement.setString(4, phoneNumber);
 			preparedStatement.setString(5, email);
-			preparedStatement.setString(6, addressID);
-			preparedStatement.setString(7, subjectID);
+			preparedStatement.setString(6, password);
+			preparedStatement.setString(7, addressID);
+			preparedStatement.setString(8, subjectID);
 
 			return (preparedStatement.executeUpdate() > 0);
 		} catch (SQLException ex) {
@@ -106,8 +117,8 @@ public class TeachersTable {
 	}
 
 	public static boolean updateTeachers(String teacherID, String teacherName, String teacherSurname,
-			String phoneNumber, String email, String addressID, String subjectID) {
-		String query = "UPDATE Teacher SET teacherName=?, teacherSurname=?, phoneNumber=?, email=?, addressID=?, subjectID=?"
+			String phoneNumber, String email, String password, String addressID, String subjectID) {
+		String query = "UPDATE Teacher SET teacherName=?, teacherSurname=?, phoneNumber=?, email=?, password=?, addressID=?, subjectID=?"
 				+ "WHERE teacherID=?";
 
 		try {
@@ -117,9 +128,10 @@ public class TeachersTable {
 			preparedStatement.setString(2, teacherSurname);
 			preparedStatement.setString(3, phoneNumber);
 			preparedStatement.setString(4, email);
-			preparedStatement.setString(5, addressID);
-			preparedStatement.setString(6, subjectID);
-			preparedStatement.setString(7, teacherID);
+			preparedStatement.setString(5, password);
+			preparedStatement.setString(6, addressID);
+			preparedStatement.setString(7, subjectID);
+			preparedStatement.setString(8, teacherID);
 
 			return (preparedStatement.executeUpdate() > 0);
 		} catch (SQLException ex) {
@@ -154,7 +166,7 @@ public class TeachersTable {
 			while (resultSet.next()) {
 				TeachersTable teachers = new TeachersTable(resultSet.getString(1), resultSet.getString(2),
 						resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-						resultSet.getString(7));
+						resultSet.getString(7), resultSet.getString(8));
 				teachersList.add(teachers);
 			}
 		} catch (SQLException ex) {
