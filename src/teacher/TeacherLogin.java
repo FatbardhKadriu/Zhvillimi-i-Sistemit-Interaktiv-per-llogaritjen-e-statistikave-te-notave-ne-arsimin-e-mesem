@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -44,6 +45,12 @@ public class TeacherLogin
 		loginPane.setAlignment(Pos.CENTER);
 		btnLogin.setOnAction(e -> {
 			loginStudent();
+		});
+		
+		btnLogin.setOnKeyPressed(e-> {
+			if(e.getCode() == KeyCode.ENTER) {
+				loginStudent();
+			}
 		});
 		pane.getChildren().addAll(title, loginPane);
 		title.getStyleClass().add("title");
