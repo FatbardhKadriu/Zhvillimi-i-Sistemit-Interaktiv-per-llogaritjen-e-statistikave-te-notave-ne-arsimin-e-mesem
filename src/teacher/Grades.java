@@ -237,29 +237,30 @@ public class Grades
 			double tasks, double essay, double debates, double projects, double tests, double quizzess,
 			double portfolio, double markPart1, double finalTest, double markPart2, double finalPeriodMark)
 	{
-		String query = "UPDATE Grades SET periodID=?, subjectID=?, commitment=?, "
+		String query = "UPDATE Grades SET commitment=?, "
 				+ "tasks=?, essay=?, debates=?, projects=?, tests=?, quizzess=?, portfolio=?, "
-				+ "markPart1=?, finalTest=?, markPart2=?, finalPeriodMark=? WHERE studentID=?";
+				+ "markPart1=?, finalTest=?, markPart2=?, finalPeriodMark=? WHERE studentID=? AND periodID=? AND subjectID=?";
 
 		try
 		{
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
 
-			preparedStatement.setString(1, periodID);
-			preparedStatement.setString(2, subjectID);
-			preparedStatement.setDouble(3, commitment);
-			preparedStatement.setDouble(4, tasks);
-			preparedStatement.setDouble(5, essay);
-			preparedStatement.setDouble(6, debates);
-			preparedStatement.setDouble(7, projects);
-			preparedStatement.setDouble(8, tests);
-			preparedStatement.setDouble(9, quizzess);
-			preparedStatement.setDouble(10, portfolio);
-			preparedStatement.setDouble(11, markPart1);
-			preparedStatement.setDouble(12, finalTest);
-			preparedStatement.setDouble(13, markPart2);
-			preparedStatement.setDouble(14, finalPeriodMark);
-			preparedStatement.setString(15, studentID);
+			
+			preparedStatement.setDouble(1, commitment);
+			preparedStatement.setDouble(2, tasks);
+			preparedStatement.setDouble(3, essay);
+			preparedStatement.setDouble(4, debates);
+			preparedStatement.setDouble(5, projects);
+			preparedStatement.setDouble(6, tests);
+			preparedStatement.setDouble(7, quizzess);
+			preparedStatement.setDouble(8, portfolio);
+			preparedStatement.setDouble(9, markPart1);
+			preparedStatement.setDouble(10, finalTest);
+			preparedStatement.setDouble(11, markPart2);
+			preparedStatement.setDouble(12, finalPeriodMark);
+			preparedStatement.setString(13, studentID);
+			preparedStatement.setString(14, periodID);
+			preparedStatement.setString(15, subjectID);
 
 			return (preparedStatement.executeUpdate() > 0);
 		}

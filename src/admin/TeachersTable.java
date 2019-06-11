@@ -95,8 +95,8 @@ public class TeachersTable {
 
 	public static boolean addTeachers(String teacherID, String teacherName, String teacherSurname, String phoneNumber,
 			String email, String password, String addressID, String subjectID) {
-		String query = "INSERT INTO Teacher(teacherID, teacherName, teacherSurname, phoneNumber, email, addressID, subjectID)"
-				+ "VALUES(?,?,?,?,?,?,?)";
+		String query = "INSERT INTO Teacher(teacherID, teacherName, teacherSurname, phoneNumber, email, password, addressID, subjectID)"
+				+ "VALUES(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
 

@@ -119,16 +119,16 @@ public class TeachersPanel {
 		column5.setPrefWidth(120);
 		
 		TableColumn<String, TeachersTable> column6 = new TableColumn<>("Password");
-		column5.setCellValueFactory(new PropertyValueFactory("password"));
-		column5.setPrefWidth(120);
-
-		TableColumn<String, TeachersTable> column7 = new TableColumn<>("Address ID");
-		column6.setCellValueFactory(new PropertyValueFactory("addressID"));
+		column6.setCellValueFactory(new PropertyValueFactory("password"));
 		column6.setPrefWidth(120);
 
-		TableColumn<String, TeachersTable> column8 = new TableColumn<>("Subject ID");
-		column7.setCellValueFactory(new PropertyValueFactory("subjectID"));
+		TableColumn<String, TeachersTable> column7 = new TableColumn<>("Address ID");
+		column7.setCellValueFactory(new PropertyValueFactory("addressID"));
 		column7.setPrefWidth(120);
+
+		TableColumn<String, TeachersTable> column8 = new TableColumn<>("Subject ID");
+		column8.setCellValueFactory(new PropertyValueFactory("subjectID"));
+		column8.setPrefWidth(120);
 
 		teachersTable.getColumns().add(column1);
 		teachersTable.getColumns().add(column2);
@@ -194,12 +194,12 @@ public class TeachersPanel {
 		gridPane1.addRow(3, phoneNumber);
 		gridPane1.addRow(4, new Label("Email"));
 		gridPane1.addRow(4, email);
-		gridPane1.addRow(4, new Label("Password"));
-		gridPane1.addRow(4, password);
-		gridPane1.addRow(5, new Label("Address ID"));
-		gridPane1.addRow(5, addressID);
-		gridPane1.addRow(6, new Label("Subject ID"));
-		gridPane1.addRow(6, subjectID);
+		gridPane1.addRow(5, new Label("Password"));
+		gridPane1.addRow(5, password);
+		gridPane1.addRow(6, new Label("Address ID"));
+		gridPane1.addRow(6, addressID);
+		gridPane1.addRow(7, new Label("Subject ID"));
+		gridPane1.addRow(7, subjectID);
 
 		gridPane1.setPadding(new Insets(4, 12, 4, 22));
 
