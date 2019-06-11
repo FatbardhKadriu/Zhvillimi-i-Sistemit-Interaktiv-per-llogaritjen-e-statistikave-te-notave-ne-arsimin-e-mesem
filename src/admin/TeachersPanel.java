@@ -153,7 +153,14 @@ public class TeachersPanel {
 				subjectID.setText(String.valueOf(row.getItem().getSubjectID()));
 				adminSetAllEnable();
 				teacherID.setDisable(true);
-			});
+				pane.setOnKeyPressed(ev -> {
+					if(ev.isControlDown() && ev.getCode() == KeyCode.D)
+					{
+						deleteTeachers();
+					}
+				});
+			
+		});
 			return row;
 		});
 //		studentsTable.setPrefWidth(500);
