@@ -127,87 +127,6 @@ CREATE TABLE gradeDescription
     PRIMARY KEY(gradeID)
 );
 
-
-#Krijimi i tabeles per llogaritjen e notes mesatare te secilit student.
-CREATE TABLE StudentsGPA 
-(
-	studentID VARCHAR(255),
-    excellentNumber INTEGER,
-    exceedsAcceptableNumber INTEGER,
-    acceptableNumber INTEGER,
-    belowAcceptableNumber INTEGER,
-    failingNumber INTEGER,
-    unGradedNumber INTEGER,
-    GPA REAL,
-    gradeID VARCHAR(255),
-    PRIMARY KEY(studentID),
-	FOREIGN KEY(studentID) REFERENCES Student(studentID) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY(gradeID) REFERENCES gradeDescription(gradeID) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
-#Tabela per statistikat e pergjithshme per secilen lende.
-CREATE TABLE overallSucessSubjects
-(
-	subjectID VARCHAR(255),
-    excellentNumber INTEGER,
-    excellentPercentage REAL,
-    exceedsAcceptableNumber INTEGER,
-    exceedsAcceptablePercentage REAL,
-    acceptableNumber INTEGER,
-    acceptablePercentage REAL,
-    belowAcceptableNumber INTEGER,
-    belowAcceptablePercentage REAL,
-    positiveResultNumber INTEGER,
-    positiveResultPercetange REAL,
-    failingNumber INTEGER,
-    failingPercentage REAL,
-    unGradedNumber INTEGER,
-    unGradedPercentage REAL,
-    GPA REAL,
-    PRIMARY KEY(subjectID),
-    FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID)
-);
-
-
-#Tabela per statistikat e pergjithshme te seciles klase.
-CREATE TABLE overallSucessClass
-(
-	classRoomNumber VARCHAR(255),
-	totalExcellentNumber INTEGER,
-    totalExcellentPercentage REAL,
-    totalExceedsAcceptableNumber INTEGER,
-    totalExceedsAcceptablePercentage REAL,
-    totalAcceptableNumber INTEGER,
-    totalAcceptablePercentage REAL,
-    totalBelowAcceptableNumber INTEGER,
-    totalBelowAcceptablePercentage REAL,
-    totalPositiveResultNumber INTEGER,
-    totalPositiveResultPercetange REAL,
-    totalFailingNumber INTEGER,
-    totalFailingPercentage REAL,
-    totalUnGradedNumber INTEGER,
-    totalUnGradedPercentage REAL,
-    totalGPA REAL,
-    PRIMARY KEY(classRoomNumber),
-    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
-#Tabela per llogaritjen e statistikave te pergjithshme te studenteve.
-CREATE TABLE overallSucessStudents
-(
-	classRoomNumber VARCHAR(255),
-    positiveResultNumber INTEGER,
-    positiveResultPercetange REAL,
-    negativeResultNumber INTEGER,
-    negativeResultPercetange REAL,
-    authorisedTotal INTEGER,
-    unAuthorisedTotal INTEGER,
-    PRIMARY KEY(classRoomNumber),
-    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 #Tabela per te dhenat e administratoreve.
 CREATE TABLE Administrator
 (
@@ -264,7 +183,7 @@ INSERT INTO gradeDescription VALUES
 ('2', 'Mjaftueshem'),
 ('1', 'dobet');
 
-DROP VIEW finalPeriodMark;
+-- DROP VIEW finalPeriodMark;
 
 CREATE VIEW finalPeriodMark AS 
 SELECT studentID, subjectID, SUM(finalPeriodMark) / 3 AS 'finalPeriodMark'
@@ -272,3 +191,8 @@ FROM Grades
 GROUP BY studentID;
 
 select * from finalPeriodMark;
+
+-- CREATE VIEW StudentsGPA AS
+
+select * from StudentsGPA;
+
