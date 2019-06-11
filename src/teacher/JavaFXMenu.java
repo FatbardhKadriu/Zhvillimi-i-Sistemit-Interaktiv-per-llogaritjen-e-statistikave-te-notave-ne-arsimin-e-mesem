@@ -30,7 +30,6 @@ public class JavaFXMenu extends Application
 	@Override
 	public void start(Stage stage)
 	{
-
 		MenuBar menuBar = new MenuBar();
 		Menu menu1 = new Menu("Menu 1");
 		menuBar.getMenus().add(menu1);

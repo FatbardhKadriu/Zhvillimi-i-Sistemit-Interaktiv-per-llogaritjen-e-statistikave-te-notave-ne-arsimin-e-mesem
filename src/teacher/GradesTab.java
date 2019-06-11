@@ -2,15 +2,14 @@ package teacher;
 
 import java.util.List;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -77,9 +76,9 @@ public class GradesTab
 		formPane.setHgap(10);
 		formPane.setVgap(10);
 
-		//		markPart1Txt.setDisable(true);
-		//		markPart2Txt.setDisable(true);
-		//		finalPeriodMarkTxt.setDisable(true);
+		markPart1Txt.setDisable(true);
+		markPart2Txt.setDisable(true);
+		finalPeriodMarkTxt.setDisable(true);
 
 		// Buttons pane
 		HBox buttonsPane = new HBox(10);
@@ -186,6 +185,35 @@ public class GradesTab
 		gradesTable.getColumns().add(column14);
 		gradesTable.getColumns().add(column15);
 
+		gradesTable.setRowFactory(tv -> {
+			TableRow<Grades> row = new TableRow<>();
+
+			row.setOnMouseClicked(e -> {
+
+				periodIDTxt.setText(row.getItem().getPeriodID());
+				studentIDTxt.setText(row.getItem().getStudentID());
+				subjectIDTxt.setText(row.getItem().getSubjectID());
+				commitmentTxt.setText(String.valueOf(row.getItem().getCommitment()));
+				tasksTxt.setText(String.valueOf(row.getItem().getTasks()));
+				essayTxt.setText(String.valueOf(row.getItem().getEssay()));
+				debatesTxt.setText(String.valueOf(row.getItem().getDebates()));
+				projectsTxt.setText(String.valueOf(row.getItem().getProjects()));
+				testsTxt.setText(String.valueOf(row.getItem().getTests()));
+				quizzessTxt.setText(String.valueOf(row.getItem().getQuizzess()));
+				portfolioTxt.setText(String.valueOf(row.getItem().getPortfolio()));
+				markPart1Txt.setText(String.valueOf(row.getItem().getMarkPart1()));
+				finalTestTxt.setText(String.valueOf(row.getItem().getFinalTest()));
+				markPart2Txt.setText(String.valueOf(row.getItem().getMarkPart2()));
+				finalPeriodMarkTxt.setText(String.valueOf(row.getItem().getFinalPeriodMark()));
+
+				markPart1Txt.setDisable(true);
+				markPart2Txt.setDisable(true);
+				finalPeriodMarkTxt.setDisable(true);
+			});
+
+			return row;
+		});
+
 		gradesTable.setPrefWidth(1360);
 		gradesTable.setPrefHeight(200);
 
@@ -197,7 +225,7 @@ public class GradesTab
 		mainPane.setPadding(new Insets(15, 15, 15, 15));
 
 		showGrades();
-
+		
 		tab.setContent(mainPane);
 	}
 
@@ -236,14 +264,27 @@ public class GradesTab
 
 	public void insertGrade()
 	{
+		double markPart1 = Double.parseDouble(commitmentTxt.getText()) * 0.3 +
+						   Double.parseDouble(tasksTxt.getText()) * 0.1 +
+						   Double.parseDouble(essayTxt.getText()) * 0.1 +
+						   Double.parseDouble(debatesTxt.getText()) * 0.1 + 
+						   Double.parseDouble(projectsTxt.getText()) * 0.1 +
+						   Double.parseDouble(testsTxt.getText()) * 0.2 + 
+						   Double.parseDouble(quizzessTxt.getText()) * 0.05 + 
+						   Double.parseDouble(portfolioTxt.getText()) * 0.05;
+		
+		double markPart2 = Double.parseDouble(finalTestTxt.getText()) * 0.4;
+		
+		double finalPeriodMark = markPart1 * 0.6 + markPart2;
+						   
 
 		if (Grades.addGrade(periodIDTxt.getText(), studentIDTxt.getText(), subjectIDTxt.getText(),
 				Double.parseDouble(commitmentTxt.getText()), Double.parseDouble(tasksTxt.getText()),
 				Double.parseDouble(essayTxt.getText()), Double.parseDouble(debatesTxt.getText()),
 				Double.parseDouble(projectsTxt.getText()), Double.parseDouble(testsTxt.getText()),
 				Double.parseDouble(quizzessTxt.getText()), Double.parseDouble(portfolioTxt.getText()),
-				Double.parseDouble(markPart1Txt.getText()), Double.parseDouble(finalTestTxt.getText()),
-				Double.parseDouble(markPart2Txt.getText()), Double.parseDouble(finalPeriodMarkTxt.getText())))
+				markPart1, Double.parseDouble(finalTestTxt.getText()),
+				markPart2, finalPeriodMark))
 		{
 			showGrades();
 			clearForm();
