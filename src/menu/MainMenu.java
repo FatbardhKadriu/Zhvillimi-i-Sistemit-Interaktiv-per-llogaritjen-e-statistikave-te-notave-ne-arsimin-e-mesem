@@ -13,6 +13,8 @@ public class MainMenu
 		Menu help = new Menu("Help");
 		menuBar.getMenus().addAll(file, edit, help);
 		
+		
+		
 		return menuBar;
 	}
 }

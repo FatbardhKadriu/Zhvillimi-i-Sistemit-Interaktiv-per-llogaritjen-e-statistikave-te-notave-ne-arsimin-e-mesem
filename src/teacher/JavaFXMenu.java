@@ -110,6 +110,7 @@ public class JavaFXMenu extends Application
 				if (!openTabs.contains(tabShowResults))
 				{
 					tabPane.getTabs().addAll(tabShowResults);
+					new FinalGradeTab(tabShowResults).open();
 					openTabs.add(tabShowResults);
 				}
 				else

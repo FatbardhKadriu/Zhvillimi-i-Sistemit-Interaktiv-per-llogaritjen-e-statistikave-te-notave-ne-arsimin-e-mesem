@@ -85,7 +85,7 @@ CREATE TABLE Grades
     finalTest REAL,
 	markPart2 REAL,
     finalPeriodMark REAL,
-	PRIMARY KEY(periodID),
+	PRIMARY KEY(periodID, studentID, subjectID),
 	FOREIGN KEY(studentID) REFERENCES Student(studentID) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE
  );
@@ -116,17 +116,6 @@ CREATE TABLE Teacher
     PRIMARY KEY(teacherID),
 	FOREIGN KEY(addressID) REFERENCES Address(addressID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
-#Tabela per te dhenat e vijueshmerise.
-CREATE TABLE Attendance
-(
-    studentID VARCHAR(255),
-	authorised INTEGER,
-    unauthorised INTEGER,
-    PRIMARY KEY(studentID),
-	FOREIGN KEY(studentID) REFERENCES Student(studentID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -219,22 +208,6 @@ CREATE TABLE overallSucessStudents
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
-#Tabela per oret mesimore te mbajtura.
-CREATE TABLE Classes
-(
-	subjectID VARCHAR(255),
-	teacherID VARCHAR(255),
-    classRoomNumber VARCHAR(255),
-	plannedHours INTEGER,
-	heldHours INTEGER,
-	PRIMARY KEY(subjectID, teacherID, classRoomNumber),
-	FOREIGN KEY(subjectID) REFERENCES Subjects(subjectID) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY(teacherID) REFERENCES Teacher(teacherID) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
 #Tabela per te dhenat e administratoreve.
 CREATE TABLE Administrator
 (
@@ -291,9 +264,11 @@ INSERT INTO gradeDescription VALUES
 ('2', 'Mjaftueshem'),
 ('1', 'dobet');
 
+DROP VIEW finalPeriodMark;
 
+CREATE VIEW finalPeriodMark AS 
+SELECT studentID, subjectID, SUM(finalPeriodMark) / 3 AS 'finalPeriodMark'
+FROM Grades 
+GROUP BY studentID;
 
-
-
-
-
+select * from finalPeriodMark;
