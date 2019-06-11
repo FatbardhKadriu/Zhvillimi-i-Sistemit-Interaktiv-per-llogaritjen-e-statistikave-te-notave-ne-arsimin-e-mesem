@@ -21,6 +21,9 @@ CREATE TABLE City
     PRIMARY KEY(cityID)
 );
 
+insert into city values('1', 'Prishtine', 'Kosove', '10000');
+
+select * from student;
 
 #Tabela per adresat e banimit
 CREATE TABLE Address
@@ -31,6 +34,8 @@ CREATE TABLE Address
 	PRIMARY KEY (addressID),
 	FOREIGN KEY (cityID) REFERENCES City(cityID) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+insert into Address values('1', '1', 'Skenderbeu');
 
 
 /*
@@ -47,26 +52,22 @@ CREATE TABLE ClassRoom
 #Tabela per studentet (nxenesit)
 CREATE TABLE Student
 (
-	studentID VARCHAR(255),
-    studentName VARCHAR(255),
-    studentSurname VARCHAR(255),
-    gender CHAR(1),
-    phoneNumber VARCHAR(255),
-    email VARCHAR(255),
-    classRoomNumber VARCHAR(255),
-    addressID VARCHAR(255),
-    birthDate DATE,
-    age INTEGER,
+	studentID VARCHAR(255) not null,
+    studentName VARCHAR(255) not null,
+    studentSurname VARCHAR(255) not null,
+    gender CHAR(1) not null,
+    phoneNumber VARCHAR(255) not null,
+    email VARCHAR(255) not null,
+    classRoomNumber VARCHAR(255) not null,
+    addressID VARCHAR(255) not null,
+    birthDate varchar(255) not null,
+    age INTEGER not null,
     PRIMARY KEY(studentID),
     FOREIGN KEY(classRoomNumber) REFERENCES ClassRoom(classRoomNumber) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(addressID) REFERENCES Address(addressID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-insert into student(studentID) values (170714100046);
-/*
-	Tabela per notat ne nje periode te caktuare. 
-    Vleresimi behet duke llogaritur noten ne dy pjese bazuar ne angazhimet e meposhtme. 
-*/
+
 CREATE TABLE Grades
 (
 	periodID VARCHAR(255),
@@ -244,7 +245,8 @@ CREATE TABLE Administrator
     PRIMARY KEY(administratorID));
 
 INSERT INTO Administrator VALUES 
-('1','admin','admin@gmail.com','admin');
+('1','admin','admin@gmail.com','admin'),
+('2','bardhi','bardhi','bardhi');
 
 
 INSERT INTO Subjects VALUES
