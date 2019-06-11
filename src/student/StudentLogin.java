@@ -47,7 +47,7 @@ public class StudentLogin {
 			loginStudent();
 		});
 		
-		btnLogin.setOnKeyPressed(e-> {
+		pane.setOnKeyPressed(e-> {
 			if(e.getCode() == KeyCode.ENTER) {
 				loginStudent();
 			}

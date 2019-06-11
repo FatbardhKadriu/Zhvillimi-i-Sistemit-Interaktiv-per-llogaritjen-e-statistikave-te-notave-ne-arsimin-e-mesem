@@ -25,7 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import Help.AdminHelp;
+import Help.studentHelp;
 
 public class StudentsPanel {
 	private static Label studentLabel = new Label("Student Registration Details");
@@ -76,13 +76,13 @@ public class StudentsPanel {
 		MenuItem itmAbout = new MenuItem("About");
 		itmAbout.setOnAction(e -> {
 
-			AdminHelp.about();
+			studentHelp.about();
 		});
 
 		Menu help = new Menu("Help");
 		pane.setOnKeyPressed(e -> {
 			if (e.getCode() == KeyCode.F1) {
-				AdminHelp.about();
+				studentHelp.about();
 			}
 			
 			if(e.isAltDown() && e.getCode() == KeyCode.F4)
