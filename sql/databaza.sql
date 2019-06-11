@@ -198,29 +198,24 @@ GROUP BY studentID;
 
 SELECT * FROM StudentsGPA;
 
-CREATE VIEW Bettwen2and3 AS
+CREATE VIEW Bettwen2and3(and23) AS
 SELECT COUNT(*)
 FROM StudentsGPA
 WHERE Average >= 2 AND Average < 3;
 
-CREATE VIEW Bettwen3and4 AS
+CREATE VIEW Bettwen3and4(and34) AS
 SELECT COUNT(*)
 FROM StudentsGPA
 WHERE Average >= 3 AND Average < 4;
 
-CREATE VIEW Bettwen4and5 AS
-SELECT COUNT(*) 
+CREATE VIEW Bettwen4and5(and45) AS
+SELECT COUNT(*)
 FROM StudentsGPA
 WHERE Average >= 4 AND Average <= 5;
 
-CREATE VIEW CountStudents(Numri) AS
-SELECT * 
-FROM Bettwen2and3 
-UNION ALL
-SELECT *
-FROM Bettwen3and4 
-UNION ALL
-SELECT * 
-FROM Bettwen4and5;
+
+CREATE VIEW CountStudents(Mes23, Mes34, Mes45) AS
+SELECT and23, and34, and45
+FROM Bettwen2and3, Bettwen3and4, Bettwen4and5;
 
 SELECT * FROM CountStudents;
