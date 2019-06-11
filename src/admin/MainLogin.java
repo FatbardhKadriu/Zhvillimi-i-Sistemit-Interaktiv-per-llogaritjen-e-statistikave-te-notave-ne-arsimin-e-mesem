@@ -60,7 +60,7 @@ public class MainLogin extends Application{
 
 	}
 	public void loginAdmin() {
-		String query = "Select * from admin where username = ? AND password = ?";
+		String query = "Select * from Administrator where email = ? AND password = ?";
 		try {
 			
             connection = database.getConnection();
@@ -81,7 +81,7 @@ public class MainLogin extends Application{
 				
 //				mainStage.show();
 				mainStage.hide();
-				AdminPanel.createStage();
+				StudentsPanel.createStage();
 				
 				
 //				System.exit(1);
