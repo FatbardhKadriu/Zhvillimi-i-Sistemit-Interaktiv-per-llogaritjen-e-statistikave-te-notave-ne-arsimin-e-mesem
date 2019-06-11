@@ -23,8 +23,6 @@ CREATE TABLE City
 
 insert into city values('1', 'Prishtine', 'Kosove', '10000');
 
-select * from student;
-
 #Tabela per adresat e banimit
 CREATE TABLE Address
 ( 
@@ -58,6 +56,7 @@ CREATE TABLE Student
     gender CHAR(1) not null,
     phoneNumber VARCHAR(255) not null,
     email VARCHAR(255) not null,
+	password VARCHAR(255) not null,
     classRoomNumber VARCHAR(255) not null,
     addressID VARCHAR(255) not null,
     birthDate varchar(255) not null,

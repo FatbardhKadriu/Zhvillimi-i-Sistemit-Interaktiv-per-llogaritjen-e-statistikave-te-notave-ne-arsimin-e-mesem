@@ -18,12 +18,14 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import Help.Help;
 
 public class StudentsPanel {
 	private static Label studentLabel = new Label("Student Registration Details");
@@ -69,10 +71,16 @@ public class StudentsPanel {
 		itmTeacher.setOnAction(e -> {
 			TeachersPanel.createStage();
 		});
+		MenuItem itmAbout = new MenuItem("About");
 
 		Menu help = new Menu("Help");
+		pane.setOnKeyPressed(e -> {
+				if(e.getCode() == KeyCode.F1) {
+						Help.about();
+				}
+		} );
 
-		MenuItem itmAbout = new MenuItem("About");
+		
 
 		file.getItems().addAll(itmClose);
 		edit.getItems().addAll(itmCourse, itmTeacher);
@@ -105,7 +113,7 @@ public class StudentsPanel {
 		TableColumn<String, StudentsTable> column6 = new TableColumn<>("Email");
 		column6.setCellValueFactory(new PropertyValueFactory("email"));
 		column6.setPrefWidth(120);
-		
+
 		TableColumn<String, StudentsTable> column7 = new TableColumn<>("Password");
 		column7.setCellValueFactory(new PropertyValueFactory("password"));
 		column7.setPrefWidth(120);
@@ -155,6 +163,13 @@ public class StudentsPanel {
 				password.setText(row.getItem().getPassword());
 				adminSetAllEnable();
 				studentID.setDisable(true);
+				pane.setOnKeyPressed(ev -> {
+					if(ev.getCode() == KeyCode.D)
+					{
+						deleteStudents();
+					}
+				});
+
 			});
 			return row;
 		});
@@ -230,9 +245,17 @@ public class StudentsPanel {
 		btnDelete.setOnAction(e -> {
 			deleteStudents();
 		});
+
 		btnAddNew.setOnAction(e -> {
 			adminSetAllEnable();
 		});
+
+		pane.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.A) {
+				adminSetAllEnable();
+			}
+		});
+
 		HBox hbox5 = new HBox();
 
 		hbox5.getChildren().addAll(btnClear, btnSave);
@@ -279,7 +302,7 @@ public class StudentsPanel {
 	public static void insertStudents() {
 
 		if (StudentsTable.addStudents(studentID.getText(), studentName.getText(), studentSurname.getText(),
-				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(),  classRoomNumber.getText(),
+				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(), classRoomNumber.getText(),
 				addressID.getText(), birthDate.getText(), Integer.parseInt(age.getText()))) {
 			showStudents();
 			clearForm();

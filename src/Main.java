@@ -47,6 +47,8 @@ public class Main extends Application{
 		student.setOnAction(e -> {
 			StudentLogin.createStage();
 		});
+		
+	
 		pane.getChildren().addAll(admin, teacher, student);
 		pane.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(pane, 600, 300);
