@@ -106,7 +106,7 @@ public class StudentsPanel {
 		TableColumn<String, StudentsTable> column6 = new TableColumn<>("Email");
 		column6.setCellValueFactory(new PropertyValueFactory("email"));
 		column6.setPrefWidth(120);
-		
+
 		TableColumn<String, StudentsTable> column7 = new TableColumn<>("Password");
 		column7.setCellValueFactory(new PropertyValueFactory("password"));
 		column7.setPrefWidth(120);
@@ -156,6 +156,13 @@ public class StudentsPanel {
 				password.setText(row.getItem().getPassword());
 				adminSetAllEnable();
 				studentID.setDisable(true);
+				pane.setOnKeyPressed(ev -> {
+					if(ev.getCode() == KeyCode.D)
+					{
+						deleteStudents();
+					}
+				});
+
 			});
 			return row;
 		});
@@ -231,15 +238,17 @@ public class StudentsPanel {
 		btnDelete.setOnAction(e -> {
 			deleteStudents();
 		});
+
 		btnAddNew.setOnAction(e -> {
 			adminSetAllEnable();
 		});
-		
-		btnAddNew.setOnKeyPressed(e -> {
-			if(e.getCode() == KeyCode.A) {
+
+		pane.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.A) {
 				adminSetAllEnable();
-			} 
+			}
 		});
+
 		HBox hbox5 = new HBox();
 
 		hbox5.getChildren().addAll(btnClear, btnSave);
@@ -286,7 +295,7 @@ public class StudentsPanel {
 	public static void insertStudents() {
 
 		if (StudentsTable.addStudents(studentID.getText(), studentName.getText(), studentSurname.getText(),
-				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(),  classRoomNumber.getText(),
+				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(), classRoomNumber.getText(),
 				addressID.getText(), birthDate.getText(), Integer.parseInt(age.getText()))) {
 			showStudents();
 			clearForm();
