@@ -15,7 +15,7 @@ public class HelpTeacher {
 
 		WebEngine webEngine = browser.getEngine();
 
-		String url = Help.class.getResource("teacherhelp.html").toExternalForm();
+		String url = HelpTeacher.class.getResource("teacherHelp-en.html").toExternalForm();
 
 		System.out.println("Local URL: " + url);
 		

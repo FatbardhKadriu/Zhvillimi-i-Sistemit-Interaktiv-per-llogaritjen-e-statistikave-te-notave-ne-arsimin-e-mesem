@@ -16,7 +16,7 @@ public class HelpAdmin {
 
 		WebEngine webEngine = browser.getEngine();
 
-		String url = Help.class.getResource("adminhelp.html").toExternalForm();
+		String url = HelpAdmin.class.getResource("adminhelp.html").toExternalForm();
 
 		System.out.println("Local URL: " + url);
 		
