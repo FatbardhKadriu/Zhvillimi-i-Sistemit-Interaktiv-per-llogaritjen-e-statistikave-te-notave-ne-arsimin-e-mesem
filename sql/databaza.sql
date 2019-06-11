@@ -183,15 +183,44 @@ INSERT INTO gradeDescription VALUES
 ('2', 'Mjaftueshem'),
 ('1', 'dobet');
 
--- DROP VIEW finalPeriodMark;
 
 CREATE VIEW finalPeriodMark AS 
 SELECT studentID, subjectID, SUM(finalPeriodMark) / 3 AS 'finalPeriodMark'
 FROM Grades 
+GROUP BY studentID, subjectID;
+
+SELECT * FROM finalPeriodMark;
+
+CREATE VIEW StudentsGPA AS
+SELECT studentID, AVG(finalPeriodMark) AS 'Average'
+FROM finalPeriodMark
 GROUP BY studentID;
-select * from finalPeriodMark;
 
--- CREATE VIEW StudentsGPA AS
+SELECT * FROM StudentsGPA;
 
-select * from StudentsGPA;
+CREATE VIEW Bettwen2and3 AS
+SELECT COUNT(*)
+FROM StudentsGPA
+WHERE Average >= 2 AND Average < 3;
 
+CREATE VIEW Bettwen3and4 AS
+SELECT COUNT(*)
+FROM StudentsGPA
+WHERE Average >= 3 AND Average < 4;
+
+CREATE VIEW Bettwen4and5 AS
+SELECT COUNT(*) 
+FROM StudentsGPA
+WHERE Average >= 4 AND Average <= 5;
+
+CREATE VIEW CountStudents(Numri) AS
+SELECT * 
+FROM Bettwen2and3 
+UNION ALL
+SELECT *
+FROM Bettwen3and4 
+UNION ALL
+SELECT * 
+FROM Bettwen4and5;
+
+SELECT * FROM CountStudents;
