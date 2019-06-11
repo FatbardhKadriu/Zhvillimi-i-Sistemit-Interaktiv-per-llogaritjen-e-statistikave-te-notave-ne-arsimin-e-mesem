@@ -22,9 +22,9 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage)
 	{
-		Image image1 = new Image("images/admin.png");
-		Image image2 = new Image("images/teacher.jpg");
-		Image image3 = new Image("images/student.png");
+		Image image1 = new Image("images/admin1.png");
+		Image image2 = new Image("images/teacher1.png");
+		Image image3 = new Image("images/student1.png");
 		ImageView adminImage = new ImageView(image1);
 		ImageView teacherImage = new ImageView(image2);
 		ImageView studentImage = new ImageView(image3);
@@ -36,8 +36,11 @@ public class Main extends Application{
 		teacherImage.setFitWidth(100);
 		HBox pane = new HBox(30);
 		admin = new Button("Admin", adminImage);
+			admin.setStyle("-fx-background-color:white;");
 		teacher = new Button("Teacher", teacherImage);
+			teacher.setStyle("-fx-background-color:white;");
 		student = new Button("Student", studentImage);
+			student.setStyle("-fx-background-color:white;");
 		admin.setOnAction(e -> {
 			MainLogin.createStage();
 		});
