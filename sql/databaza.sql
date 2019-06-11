@@ -198,24 +198,30 @@ GROUP BY studentID;
 
 SELECT * FROM StudentsGPA;
 
-CREATE VIEW Bettwen2and3(and23) AS
+CREATE VIEW mjaftueshem(mjaft) AS
 SELECT COUNT(*)
 FROM StudentsGPA
-WHERE Average >= 2 AND Average < 3;
+WHERE Average >= 1.5 AND Average < 2.5;
 
-CREATE VIEW Bettwen3and4(and34) AS
+CREATE VIEW mire(mire) AS
 SELECT COUNT(*)
 FROM StudentsGPA
-WHERE Average >= 3 AND Average < 4;
+WHERE Average >= 2.5 AND Average < 3.5;
 
-CREATE VIEW Bettwen4and5(and45) AS
+CREATE VIEW shumemire (shumemire) AS
 SELECT COUNT(*)
 FROM StudentsGPA
-WHERE Average >= 4 AND Average <= 5;
+WHERE Average >= 3.5 AND Average < 4.5;
+
+CREATE VIEW shkelqyeshem(shkelqyeshem) AS
+SELECT COUNT(*)
+FROM StudentsGPA
+WHERE Average >= 4.5 AND Average <= 5;
 
 
-CREATE VIEW CountStudents(Mes23, Mes34, Mes45) AS
-SELECT and23, and34, and45
-FROM Bettwen2and3, Bettwen3and4, Bettwen4and5;
+CREATE VIEW CountStudents(mjaft, mire, shumemire, shkelqyeshem) AS
+SELECT mjaft, mire, shumemire, shkelqyeshem
+FROM mjaftueshem, mire, shumemire, shkelqyeshem;
+
 
 SELECT * FROM CountStudents;

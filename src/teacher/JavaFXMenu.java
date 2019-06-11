@@ -88,6 +88,7 @@ public class JavaFXMenu
 				if (!openTabs.contains(tabVendos))
 				{
 					tabPane.getTabs().addAll(tabVendos);
+					new ChartTab(tabVendos).open();
 					openTabs.add(tabVendos);
 				}
 				else
