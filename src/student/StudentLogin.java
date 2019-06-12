@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 public class StudentLogin {
 
-	public TextField email = new TextField();
+	public TextField studentID = new TextField();
 	private PasswordField password = new PasswordField();
 	private Label ErrorResult = new Label();
 	private Button btnLogin = new Button("Login");
@@ -38,7 +38,7 @@ public class StudentLogin {
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
 		GridPane loginPane = new GridPane();
-		loginPane.addRow(0, new Label("Email"), email);
+		loginPane.addRow(0, new Label("ID"), studentID);
 		loginPane.addRow(1, new Label("Password"), password);
 		loginPane.add(btnLogin, 1, 3);
 		loginPane.add(ErrorResult, 1, 4);
@@ -68,11 +68,11 @@ public class StudentLogin {
 	}
 
 	public void loginStudent() {
-		String query = "Select * from Student where email = ? AND password = ?";
+		String query = "Select * from Student where studentID = ? AND password = ?";
 		try {
 
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
-			preparedStatement.setString(1, email.getText());
+			preparedStatement.setString(1, studentID.getText());
 			preparedStatement.setString(2, Hash.SHA1(password.getText()));
 
 			ResultSet result = preparedStatement.executeQuery();
