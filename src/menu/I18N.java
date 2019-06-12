@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import admin.StudentsTable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 
 public class I18N {
 
@@ -69,6 +71,13 @@ public class I18N {
 		Button btn = new Button();
 		btn.textProperty().bind(createStringBinding(key, args));
 		return btn;
+	}
+	public static TableColumn getTblColumn(String key, Object...args)
+	{
+		TableColumn<String, StudentsTable> column = new TableColumn<>();
+		column.textProperty().bind(createStringBinding(key, args));
+		return column;
+		
 	}
 
 }
