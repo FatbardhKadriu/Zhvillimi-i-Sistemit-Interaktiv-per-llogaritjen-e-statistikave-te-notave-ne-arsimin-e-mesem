@@ -81,12 +81,12 @@ public class GradesTab
 		formPane.addRow(6, I18N.getLabel("debates"), debatesTxt);
 		formPane.addRow(7, I18N.getLabel("projects"), projectsTxt);
 		formPane.addRow(8, I18N.getLabel("tests"), testsTxt);
-		formPane.addRow(9, I18N.getLabel("quzzes"), quizzessTxt);
+		formPane.addRow(9, I18N.getLabel("quzzess"), quizzessTxt);
 		formPane.addRow(10, I18N.getLabel("portfolio"), portfolioTxt);
 		formPane.addRow(11, I18N.getLabel("markpart1"), markPart1Txt);
 		formPane.addRow(12, I18N.getLabel("finaltest"), finalTestTxt);
 		formPane.addRow(13, I18N.getLabel("markpart2"), markPart2Txt);
-		formPane.addRow(14, I18N.getLabel("finalperiod"), finalPeriodMarkTxt);
+		formPane.addRow(14, I18N.getLabel("finalperiodmark"), finalPeriodMarkTxt);
 
 		formPane.setHgap(10);
 		formPane.setVgap(10);
