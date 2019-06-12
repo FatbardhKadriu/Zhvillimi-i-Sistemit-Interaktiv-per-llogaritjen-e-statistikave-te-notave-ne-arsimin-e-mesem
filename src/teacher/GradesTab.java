@@ -17,6 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import menu.I18N;
 
 public class GradesTab
 {
@@ -50,11 +51,12 @@ public class GradesTab
 	private TextField finalPeriodMarkTxt = new TextField();
 
 	// Buttons
-	private Button insertBtn = new Button("Insert");
-	private Button updateBtn = new Button("Update");
-	private Button deleteBtn = new Button("Delete");
-	private Button clearBtn = new Button("Clear");
+	private Button insertBtn = new Button();
+	private Button updateBtn = new Button();
+	private Button deleteBtn = new Button();
+	private Button clearBtn = new Button();
 
+	
 	// Table views
 	private TableView gradesTable = new TableView();
 
@@ -62,22 +64,29 @@ public class GradesTab
 	{
 		// Form pane
 		GridPane formPane = new GridPane();
+		insertBtn = I18N.getButton("insert");
+		updateBtn = I18N.getButton("insert");
+		deleteBtn = I18N.getButton("delete");
+		clearBtn = I18N.getButton("clear");
+		
+		
+		
 
-		formPane.addRow(0, new Label("PeriodID: "), periodIDTxt);
-		formPane.addRow(1, new Label("StudentID: "), studentIDTxt);
-		formPane.addRow(2, new Label("SubjectID: "), subjectIDTxt);
-		formPane.addRow(3, new Label("Commitment: "), commitmentTxt);
-		formPane.addRow(4, new Label("Tasks: "), tasksTxt);
-		formPane.addRow(5, new Label("Essay: "), essayTxt);
-		formPane.addRow(6, new Label("Debates: "), debatesTxt);
-		formPane.addRow(7, new Label("Projects: "), projectsTxt);
-		formPane.addRow(8, new Label("Tests: "), testsTxt);
-		formPane.addRow(9, new Label("Quizzess: "), quizzessTxt);
-		formPane.addRow(10, new Label("Portfolio: "), portfolioTxt);
-		formPane.addRow(11, new Label("MarkPart1: "), markPart1Txt);
-		formPane.addRow(12, new Label("FinalTest: "), finalTestTxt);
-		formPane.addRow(13, new Label("MarkPart2: "), markPart2Txt);
-		formPane.addRow(14, new Label("FinalPeriodMark: "), finalPeriodMarkTxt);
+		formPane.addRow(0, I18N.getLabel("periodid"), periodIDTxt);
+		formPane.addRow(1, I18N.getLabel("nrID"), studentIDTxt);
+		formPane.addRow(2, I18N.getLabel("subjectid"), subjectIDTxt);
+		formPane.addRow(3, I18N.getLabel("commitment"), commitmentTxt);
+		formPane.addRow(4, I18N.getLabel("tasks"), tasksTxt);
+		formPane.addRow(5, I18N.getLabel("essay"), essayTxt);
+		formPane.addRow(6, I18N.getLabel("debates"), debatesTxt);
+		formPane.addRow(7, I18N.getLabel("projects"), projectsTxt);
+		formPane.addRow(8, I18N.getLabel("tests"), testsTxt);
+		formPane.addRow(9, I18N.getLabel("quzzes"), quizzessTxt);
+		formPane.addRow(10, I18N.getLabel("portfolio"), portfolioTxt);
+		formPane.addRow(11, I18N.getLabel("markpart1"), markPart1Txt);
+		formPane.addRow(12, I18N.getLabel("finaltest"), finalTestTxt);
+		formPane.addRow(13, I18N.getLabel("markpart2"), markPart2Txt);
+		formPane.addRow(14, I18N.getLabel("finalperiod"), finalPeriodMarkTxt);
 
 		formPane.setHgap(10);
 		formPane.setVgap(10);
