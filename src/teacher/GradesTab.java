@@ -26,6 +26,11 @@ public class GradesTab
 	{
 		this.tab = tab;
 	}
+	
+	public GradesTab()
+	{
+		
+	}
 
 	// Text fields
 	private TextField periodIDTxt = new TextField();
