@@ -137,8 +137,7 @@ CREATE TABLE Administrator
     PRIMARY KEY(administratorID));
 
 INSERT INTO Administrator VALUES 
-('1','admin','admin@gmail.com','admin'),
-('2','bardhi','bardhi','bardhi');
+('','bardhi','bardhi','052887890c09cb97fde4008cf34823285aa91d0e');
 
 
 INSERT INTO Subjects VALUES
