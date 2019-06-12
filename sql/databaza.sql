@@ -224,3 +224,18 @@ FROM mjaftueshem, mire, shumemire, shkelqyeshem;
 
 
 SELECT * FROM CountStudents;
+
+
+CREATE VIEW periodaPare AS
+SELECT subjectID, periodID, COUNT(studentID) AS 'periodaPare'
+FROM Grades
+GROUP BY periodID, subjectID;
+
+SELECT * FROM periodaPare;
+
+CREATE VIEW periodaDyte AS
+SELECT subjectID, periodID, COUNT(studentID) AS 'periodaDyte'
+FROM Grades
+GROUP BY periodID, subjectID;
+
+SELECT * FROM periodaDyte;
