@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class StudentLogin {
 
-	private TextField email = new TextField();
+	public TextField email = new TextField();
 	private PasswordField password = new PasswordField();
 	private Label ErrorResult = new Label();
 	private Button btnLogin = new Button("Login");
