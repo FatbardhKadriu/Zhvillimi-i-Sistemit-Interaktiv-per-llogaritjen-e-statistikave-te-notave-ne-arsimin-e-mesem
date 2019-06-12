@@ -1,6 +1,8 @@
 package student;
 
 import database.DBConnection;
+import database.Hash;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +25,7 @@ import javafx.stage.Stage;
 
 public class StudentLogin {
 
-	private TextField email = new TextField();
+	public TextField email = new TextField();
 	private PasswordField password = new PasswordField();
 	private Label ErrorResult = new Label();
 	private Button btnLogin = new Button("Login");
@@ -70,7 +72,7 @@ public class StudentLogin {
 
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
 			preparedStatement.setString(1, email.getText());
-			preparedStatement.setString(2, password.getText());
+			preparedStatement.setString(2, Hash.SHA1(password.getText()));
 
 			ResultSet result = preparedStatement.executeQuery();
 

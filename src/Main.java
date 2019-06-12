@@ -39,8 +39,11 @@ public class Main extends Application {
 		teacherImage.setFitWidth(100);
 		HBox pane = new HBox(30);
 		admin = new Button("Admin", adminImage);
+			admin.setStyle("-fx-background-color:white;");
 		teacher = new Button("Teacher", teacherImage);
+			teacher.setStyle("-fx-background-color:white;");
 		student = new Button("Student", studentImage);
+			student.setStyle("-fx-background-color:white;");
 		pane.setOnKeyPressed(e -> {
 			if (e.isControlDown() && e.getCode() == KeyCode.A) {
 				new MainLogin().createStage();
@@ -63,9 +66,10 @@ public class Main extends Application {
 		});
 		pane.getChildren().addAll(admin, teacher, student);
 		pane.setAlignment(Pos.CENTER);
-		Scene scene = new Scene(pane, 600, 300);
+		pane.setStyle("-fx-padding:10;");
+		Scene scene = new Scene(pane, 700, 400);
 		scene.getStylesheets().add("style.css");
-		pane.setStyle("-fx-background-image: url(images/main-background.4jpeg.jpeg);-fx-background-position:top;");
+		pane.setStyle("-fx-background-image: url(images/main-background.4jpeg.jpeg);-fx-background-size:cover;");
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Main");
 		primaryStage.show();

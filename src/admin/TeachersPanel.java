@@ -4,6 +4,7 @@ import java.util.List;
 
 import Help.About;
 import Help.AdminHelp;
+import database.Hash;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -215,6 +216,9 @@ public class TeachersPanel {
 		gridPane1.addRow(7, subjectID);
 
 		gridPane1.setPadding(new Insets(4, 12, 4, 22));
+
+		gridPane1.setVgap(10);
+		gridPane1.setHgap(15);
 
 		VBox vbox3 = new VBox();
 
