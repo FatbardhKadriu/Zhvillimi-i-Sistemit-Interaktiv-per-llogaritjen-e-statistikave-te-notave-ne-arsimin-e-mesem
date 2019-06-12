@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -16,15 +17,14 @@ import admin.TeachersTable;
 import student.StudentLogin;
 import teacher.TeacherLogin;
 
-public class Main extends Application{
-	
+public class Main extends Application {
+
 	private Button admin;
 	private Button teacher;
 	private Button student;
+
 	@Override
-	public void start(Stage primaryStage)
-	{
-		
+	public void start(Stage primaryStage) {
 		Image image1 = new Image("images/admin1.png");
 		Image image2 = new Image("images/teacher1.png");
 		Image image3 = new Image("images/student1.png");
@@ -41,16 +41,26 @@ public class Main extends Application{
 		admin = new Button("Admin", adminImage);
 		teacher = new Button("Teacher", teacherImage);
 		student = new Button("Student", studentImage);
+		pane.setOnKeyPressed(e -> {
+			if (e.isControlDown() && e.getCode() == KeyCode.A) {
+				new MainLogin().createStage();
+			}
+			if (e.isControlDown() && e.getCode() == KeyCode.T) {
+				new TeacherLogin().createStage();
+			}
+			if (e.isControlDown() && e.getCode() == KeyCode.S) {
+				new StudentLogin().createStage();
+			}
+		});
 		admin.setOnAction(e -> {
-			MainLogin.createStage();
+			new MainLogin().createStage();
 		});
 		teacher.setOnAction(e -> {
-			TeacherLogin.createStage();
+			new TeacherLogin().createStage();
 		});
 		student.setOnAction(e -> {
-			StudentLogin.createStage();
+			new StudentLogin().createStage();
 		});
-		
 		pane.getChildren().addAll(admin, teacher, student);
 		pane.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(pane, 600, 300);
@@ -61,5 +71,3 @@ public class Main extends Application{
 		primaryStage.show();
 	}
 }
-
-

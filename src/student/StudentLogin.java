@@ -23,14 +23,14 @@ import javafx.stage.Stage;
 
 public class StudentLogin {
 
-	private static TextField email = new TextField();
-	private static PasswordField password = new PasswordField();
-	private static Label ErrorResult = new Label();
-	private static Button btnLogin = new Button("Login");
-	private static Label title = new Label("Login as Student");
-	private static Stage mainStage;
+	private TextField email = new TextField();
+	private PasswordField password = new PasswordField();
+	private Label ErrorResult = new Label();
+	private Button btnLogin = new Button("Login");
+	private Label title = new Label("Login as Student");
+	private Stage mainStage;
 
-	public static void createStage() {
+	public void createStage() {
 		Stage primaryStage = new Stage();
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
@@ -46,9 +46,9 @@ public class StudentLogin {
 		btnLogin.setOnAction(e -> {
 			loginStudent();
 		});
-		
-		pane.setOnKeyPressed(e-> {
-			if(e.getCode() == KeyCode.ENTER) {
+
+		pane.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER) {
 				loginStudent();
 			}
 		});
@@ -64,7 +64,7 @@ public class StudentLogin {
 
 	}
 
-	public static void loginStudent() {
+	public void loginStudent() {
 		String query = "Select * from Student where email = ? AND password = ?";
 		try {
 

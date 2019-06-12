@@ -29,28 +29,27 @@ import Help.AdminHelp;
 import Help.studentHelp;
 
 public class StudentsPanel {
-	private static Label studentLabel = new Label("Student Registration Details");
-	private static Button btnAddNew = new Button("Add New");
-	private static Button btnEdit = new Button("Edit");
-	private static Button btnDelete = new Button("Delete");
-	private static Button btnClear = new Button("Clear");
-	private static Button btnSave = new Button("Save");
-	static Label label_2 = new Label("Personal Information");
-	private static TextField studentID = new TextField();
-	private static TextField studentName = new TextField();
-	private static TextField studentSurname = new TextField();
-	private static TextField gender = new TextField();
-	private static TextField phoneNumber = new TextField();
-	private static TextField email = new TextField();
-	private static PasswordField password = new PasswordField();
-	private static TextField classRoomNumber = new TextField();
-	private static TextField addressID = new TextField();
-	private static TextField birthDate = new TextField();
-	private static TextField age = new TextField();
+	private Label studentLabel = new Label("Student Registration Details");
+	private Button btnAddNew = new Button("Add New");
+	private Button btnEdit = new Button("Edit");
+	private Button btnDelete = new Button("Delete");
+	private Button btnClear = new Button("Clear");
+	private Button btnSave = new Button("Save");
+	private TextField studentID = new TextField();
+	private TextField studentName = new TextField();
+	private TextField studentSurname = new TextField();
+	private TextField gender = new TextField();
+	private TextField phoneNumber = new TextField();
+	private TextField email = new TextField();
+	private PasswordField password = new PasswordField();
+	private TextField classRoomNumber = new TextField();
+	private TextField addressID = new TextField();
+	private TextField birthDate = new TextField();
+	private TextField age = new TextField();
 
-	private static TableView studentsTable = new TableView();
+	private TableView studentsTable = new TableView();
 
-	public static void createStage() {
+	public void createStage() {
 
 		BorderPane pane = new BorderPane();
 		Stage stage = new Stage();
@@ -64,7 +63,7 @@ public class StudentsPanel {
 		Menu file = new Menu("File");
 
 		MenuItem itmClose = new MenuItem("Close");
-		itmClose.setOnAction(e->{
+		itmClose.setOnAction(e -> {
 			stage.hide();
 		});
 
@@ -72,7 +71,7 @@ public class StudentsPanel {
 
 		MenuItem itmTeacher = new MenuItem("Teacher Panel");
 		itmTeacher.setOnAction(e -> {
-			TeachersPanel.createStage();
+			new TeachersPanel().createStage();
 		});
 		MenuItem itmAbout = new MenuItem("About");
 		itmAbout.setOnAction(e -> {
@@ -81,18 +80,27 @@ public class StudentsPanel {
 		});
 
 		Menu help = new Menu("Help");
-		pane.setOnKeyPressed(e->{
-			if(e.getCode() == KeyCode.F1)
-			{
+		pane.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.F1) {
 				studentHelp.about();
-				
 			}
-			if(e.isAltDown() && e.getCode() == KeyCode.F4)
-			{
+			if (e.isAltDown() && e.getCode() == KeyCode.F4) {
 				stage.hide();
 			}
+			if (e.isControlDown() && e.getCode() == KeyCode.A) {
+				adminSetAllEnable();
+			}
+			if (e.isControlDown() && e.getCode() == KeyCode.E) {
+				updateStudents();
+			}
+			if (e.isShiftDown() && e.getCode() == KeyCode.C) {
+				clearForm();
+				adminSetAllDisable();
+			}
+			if (e.isControlDown() && e.getCode() == KeyCode.S) {
+				insertStudents();
+			}
 		});
-
 
 		file.getItems().addAll(itmClose);
 		edit.getItems().addAll(itmTeacher);
@@ -176,12 +184,10 @@ public class StudentsPanel {
 				adminSetAllEnable();
 				studentID.setDisable(true);
 				pane.setOnKeyPressed(ev -> {
-					if(ev.isControlDown() && ev.getCode() == KeyCode.D)
-					{
+					if (ev.isControlDown() && ev.getCode() == KeyCode.D) {
 						deleteStudents();
 					}
 				});
-
 			});
 			return row;
 		});
@@ -236,6 +242,9 @@ public class StudentsPanel {
 		gridPane1.addRow(10, new Label("Age"));
 		gridPane1.addRow(10, age);
 
+		gridPane1.setVgap(10);
+		gridPane1.setHgap(15);
+
 		gridPane1.setPadding(new Insets(4, 12, 4, 22));
 
 		VBox vbox3 = new VBox();
@@ -263,12 +272,10 @@ public class StudentsPanel {
 		});
 
 		pane.setOnKeyPressed(e -> {
-			if(e.getCode() == KeyCode.A)
-			{
+			if (e.getCode() == KeyCode.A) {
 				adminSetAllEnable();
 			}
 		});
-		
 
 		HBox hbox5 = new HBox();
 
@@ -301,7 +308,7 @@ public class StudentsPanel {
 		stage.show();
 	}
 
-	public static void showStudents() {
+	public void showStudents() {
 		List<StudentsTable> students = StudentsTable.getStudents();
 
 		ObservableList<StudentsTable> studentsList = FXCollections.observableArrayList();
@@ -313,7 +320,7 @@ public class StudentsPanel {
 		studentsTable.setItems(studentsList);
 	}
 
-	public static void insertStudents() {
+	public void insertStudents() {
 
 		if (StudentsTable.addStudents(studentID.getText(), studentName.getText(), studentSurname.getText(),
 				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(), classRoomNumber.getText(),
@@ -323,14 +330,14 @@ public class StudentsPanel {
 		}
 	}
 
-	private static void deleteStudents() {
+	private void deleteStudents() {
 		if (StudentsTable.deleteStudents(studentID.getText())) {
 			showStudents();
 			clearForm();
 		}
 	};
 
-	private static void updateStudents() {
+	private void updateStudents() {
 		if (StudentsTable.updateStudents(studentID.getText(), studentName.getText(), studentSurname.getText(),
 				gender.getText(), phoneNumber.getText(), email.getText(), password.getText(), classRoomNumber.getText(),
 				addressID.getText(), birthDate.getText(), Integer.parseInt(age.getText()))) {
@@ -339,7 +346,7 @@ public class StudentsPanel {
 		}
 	};
 
-	public static void clearForm() {
+	public void clearForm() {
 		studentID.setText("");
 		studentName.setText("");
 		studentSurname.setText("");
@@ -353,7 +360,7 @@ public class StudentsPanel {
 		password.setText("");
 	}
 
-	private static void adminSetAllEnable() {
+	private void adminSetAllEnable() {
 		studentID.setDisable(false);
 		studentName.setDisable(false);
 		studentSurname.setDisable(false);
@@ -367,7 +374,7 @@ public class StudentsPanel {
 		age.setDisable(false);
 	}
 
-	private static void adminSetAllDisable() {
+	private void adminSetAllDisable() {
 		studentID.setDisable(true);
 		studentName.setDisable(true);
 		studentSurname.setDisable(true);

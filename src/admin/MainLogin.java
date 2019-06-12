@@ -23,14 +23,14 @@ import javafx.stage.Stage;
 
 public class MainLogin {
 
-	private static TextField email = new TextField();
-	private static PasswordField password = new PasswordField();
-	private static Label ErrorResult = new Label();
-	private static Button btnLogin = new Button("Login");
-	private static Label title = new Label("Login as Administrator");
-	private static Stage mainStage;
+	private TextField email = new TextField();
+	private PasswordField password = new PasswordField();
+	private Label ErrorResult = new Label();
+	private Button btnLogin = new Button("Login");
+	private Label title = new Label("Login as Administrator");
+	private Stage mainStage;
 
-	public static void createStage() {
+	public void createStage() {
 		Stage primaryStage = new Stage();
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
@@ -56,16 +56,14 @@ public class MainLogin {
 		btnLogin.getStyleClass().add("button-blue");
 		scene.getStylesheets().add("style.css");
 
-		pane.setOnKeyPressed(e-> {
-			if(e.getCode() == KeyCode.ENTER) {
+		pane.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER) {
 				loginAdmin();
 			}
 		});
-
 	}
 
-	
-	public static void loginAdmin() {
+	public void loginAdmin() {
 		String query = "Select * from Administrator where email = ? AND password = ?";
 		try {
 
@@ -85,7 +83,7 @@ public class MainLogin {
 
 //				mainStage.show();
 				mainStage.hide();
-				StudentsPanel.createStage();
+				new StudentsPanel().createStage();
 
 //				System.exit(1);
 			} else {

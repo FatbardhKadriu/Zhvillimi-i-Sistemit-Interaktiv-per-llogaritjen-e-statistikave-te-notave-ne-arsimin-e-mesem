@@ -28,26 +28,26 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TeachersPanel {
-	private static Label teachersLabel = new Label("Teachers Registration Details");
-	private static Button btnAddNew = new Button("Add New");
-	private static Button btnEdit = new Button("Edit");
-	private static Button btnDelete = new Button("Delete");
-	private static Button btnClear = new Button("Clear");
-	private static Button btnSave = new Button("Save");
+	private Label teachersLabel = new Label("Teachers Registration Details");
+	private Button btnAddNew = new Button("Add New");
+	private Button btnEdit = new Button("Edit");
+	private Button btnDelete = new Button("Delete");
+	private Button btnClear = new Button("Clear");
+	private Button btnSave = new Button("Save");
 	static Label label_2 = new Label("Personal Information");
 
-	private static TextField teacherID = new TextField();
-	private static TextField teacherName = new TextField();
-	private static TextField teacherSurname = new TextField();
-	private static TextField phoneNumber = new TextField();
-	private static TextField email = new TextField();
-	private static TextField password = new TextField();
-	private static TextField addressID = new TextField();
-	private static TextField subjectID = new TextField();
+	private TextField teacherID = new TextField();
+	private TextField teacherName = new TextField();
+	private TextField teacherSurname = new TextField();
+	private TextField phoneNumber = new TextField();
+	private TextField email = new TextField();
+	private TextField password = new TextField();
+	private TextField addressID = new TextField();
+	private TextField subjectID = new TextField();
 
-	private static TableView teachersTable = new TableView();
+	private TableView teachersTable = new TableView();
 
-	public static void createStage() {
+	public void createStage() {
 
 		Stage stage = new Stage();
 
@@ -61,31 +61,30 @@ public class TeachersPanel {
 		Menu file = new Menu("File");
 
 		MenuItem itmClose = new MenuItem("Close");
-		itmClose.setOnAction(e->{
+		itmClose.setOnAction(e -> {
 			stage.hide();
 		});
 
 		Menu edit = new Menu("Edit");
 
 		MenuItem itmStudents = new MenuItem("Students Panel");
-
-		
+		itmStudents.setOnAction(e -> {
+			new StudentsPanel().createStage();
+		});
 
 		Menu help = new Menu("Help");
 
 		MenuItem itmAbout = new MenuItem("About");
-		itmAbout.setOnAction(e->{
+		itmAbout.setOnAction(e -> {
 			AdminHelp.about();
-			
+
 		});
-		pane.setOnKeyPressed(e->{
-			if(e.getCode() == KeyCode.F1)
-			{
+		pane.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.F1) {
 				AdminHelp.about();
-				
+
 			}
-			if(e.isAltDown() && e.getCode() == KeyCode.F4)
-			{
+			if (e.isAltDown() && e.getCode() == KeyCode.F4) {
 				stage.hide();
 			}
 		});
@@ -117,7 +116,7 @@ public class TeachersPanel {
 		TableColumn<String, TeachersTable> column5 = new TableColumn<>("Email");
 		column5.setCellValueFactory(new PropertyValueFactory("email"));
 		column5.setPrefWidth(120);
-		
+
 		TableColumn<String, TeachersTable> column6 = new TableColumn<>("Password");
 		column6.setCellValueFactory(new PropertyValueFactory("password"));
 		column6.setPrefWidth(120);
@@ -154,13 +153,12 @@ public class TeachersPanel {
 				adminSetAllEnable();
 				teacherID.setDisable(true);
 				pane.setOnKeyPressed(ev -> {
-					if(ev.isControlDown() && ev.getCode() == KeyCode.D)
-					{
+					if (ev.isControlDown() && ev.getCode() == KeyCode.D) {
 						deleteTeachers();
 					}
 				});
-			
-		});
+
+			});
 			return row;
 		});
 //		studentsTable.setPrefWidth(500);
@@ -257,13 +255,12 @@ public class TeachersPanel {
 		pane.setBottom(mainPane);
 		Scene scene = new Scene(pane);
 
-
 		stage.setTitle("Teachers Panel");
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	public static void showTeachers() {
+	public void showTeachers() {
 		List<TeachersTable> teachers = TeachersTable.getTeachers();
 
 		ObservableList<TeachersTable> teachersList = FXCollections.observableArrayList();
@@ -275,7 +272,7 @@ public class TeachersPanel {
 		teachersTable.setItems(teachersList);
 	}
 
-	public static void insertTeachers() {
+	public void insertTeachers() {
 
 		if (TeachersTable.addTeachers(teacherID.getText(), teacherName.getText(), teacherSurname.getText(),
 				phoneNumber.getText(), email.getText(), password.getText(), addressID.getText(), subjectID.getText())) {
@@ -284,14 +281,14 @@ public class TeachersPanel {
 		}
 	}
 
-	private static void deleteTeachers() {
+	private void deleteTeachers() {
 		if (TeachersTable.deleteTeachers(teacherID.getText())) {
 			showTeachers();
 			clearForm();
 		}
 	};
 
-	private static void updateTeachers() {
+	private void updateTeachers() {
 		if (TeachersTable.updateTeachers(teacherID.getText(), teacherName.getText(), teacherSurname.getText(),
 				phoneNumber.getText(), email.getText(), password.getText(), addressID.getText(), subjectID.getText())) {
 			showTeachers();
@@ -299,7 +296,7 @@ public class TeachersPanel {
 		}
 	};
 
-	public static void clearForm() {
+	public void clearForm() {
 		teacherID.setText("");
 		teacherName.setText("");
 		teacherSurname.setText("");
@@ -310,7 +307,7 @@ public class TeachersPanel {
 		subjectID.setText("");
 	}
 
-	private static void adminSetAllEnable() {
+	private void adminSetAllEnable() {
 		teacherID.setDisable(false);
 		teacherName.setDisable(false);
 		teacherSurname.setDisable(false);
@@ -322,7 +319,7 @@ public class TeachersPanel {
 
 	}
 
-	private static void adminSetAllDisable() {
+	private void adminSetAllDisable() {
 		teacherID.setDisable(true);
 		teacherName.setDisable(true);
 		teacherSurname.setDisable(true);

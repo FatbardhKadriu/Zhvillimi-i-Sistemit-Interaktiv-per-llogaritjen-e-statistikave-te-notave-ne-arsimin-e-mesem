@@ -20,7 +20,7 @@ public class StudentsTable {
 	private int age;
 
 	public StudentsTable(String studentID, String studentName, String studentSurname, String gender, String phoneNumber,
-			String email,String password, String classRoomNumber, String addressID, String birthDate, int age) {
+			String email, String password, String classRoomNumber, String addressID, String birthDate, int age) {
 		super();
 		this.studentID = studentID;
 		this.studentName = studentName;
@@ -34,6 +34,7 @@ public class StudentsTable {
 		this.age = age;
 		this.password = password;
 	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -41,6 +42,7 @@ public class StudentsTable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getStudentID() {
 		return studentID;
 	}
@@ -122,7 +124,8 @@ public class StudentsTable {
 	}
 
 	public static boolean addStudents(String studentID, String studentName, String studentSurname, String gender,
-			String phoneNumber, String email,String password, String classRoomNumber, String addressID, String birthDate, int age) {
+			String phoneNumber, String email, String password, String classRoomNumber, String addressID,
+			String birthDate, int age) {
 		String query = "INSERT INTO Student(studentID, studentName, studentSurname, gender, phoneNumber, email, password, classRoomNumber, addressID, "
 				+ "birthDate,age) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
@@ -148,7 +151,8 @@ public class StudentsTable {
 	}
 
 	public static boolean updateStudents(String studentID, String studentName, String studentSurname, String gender,
-			String phoneNumber, String email,String password,  String classRoomNumber, String addressID, String birthDate, int age) {
+			String phoneNumber, String email, String password, String classRoomNumber, String addressID,
+			String birthDate, int age) {
 		String query = "UPDATE student SET studentName=?, studentSurname=?, gender=?, phoneNumber=?, email=?, password=?,  classRoomNumber=?,"
 				+ "addressID=?, birthDate=?, age=? WHERE studentID=?";
 
@@ -200,7 +204,8 @@ public class StudentsTable {
 			while (resultSet.next()) {
 				StudentsTable students = new StudentsTable(resultSet.getString(1), resultSet.getString(2),
 						resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-						resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getInt(11));
+						resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10),
+						resultSet.getInt(11));
 				studentList.add(students);
 			}
 		} catch (SQLException ex) {
