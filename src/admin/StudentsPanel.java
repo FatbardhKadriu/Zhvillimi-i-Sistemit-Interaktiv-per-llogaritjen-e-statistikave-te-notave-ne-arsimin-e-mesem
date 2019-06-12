@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import Help.About;
 import Help.AdminHelp;
 import Help.studentHelp;
 
@@ -74,9 +75,15 @@ public class StudentsPanel {
 			new TeachersPanel().createStage();
 		});
 		MenuItem itmAbout = new MenuItem("About");
-		itmAbout.setOnAction(e -> {
+		MenuItem itmHelp = new MenuItem("Help");
+		itmHelp.setOnAction(e -> {
 
 			studentHelp.about();
+		});
+		
+		itmAbout.setOnAction(e -> {
+			About.about();
+
 		});
 
 		Menu help = new Menu("Help");
@@ -105,6 +112,7 @@ public class StudentsPanel {
 		file.getItems().addAll(itmClose);
 		edit.getItems().addAll(itmTeacher);
 		help.getItems().addAll(itmAbout);
+		help.getItems().addAll(itmHelp);
 
 		menuBar.getMenus().addAll(file, edit, help);
 
