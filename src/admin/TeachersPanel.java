@@ -1,6 +1,7 @@
 package admin;
 
 import java.util.List;
+import java.util.Locale;
 
 import Help.About;
 import Help.AdminHelp;
@@ -37,7 +38,8 @@ public class TeachersPanel {
 	private Button btnEdit = new Button("Edit");
 	private Button btnDelete = new Button("Delete");
 	private Button btnClear = new Button("Clear");
-	private Button btnSave = new Button("Save");
+//	private Button btnSave = new Button("Save");
+	private Button btnSave = new Button();
 	static Label label_2 = new Label("Personal Information");
 
 	private TextField teacherID = new TextField();
@@ -52,6 +54,7 @@ public class TeachersPanel {
 
 	public void createStage() {
 
+		btnSave = I18N.getButton("save");
 		Stage stage = new Stage();
 
 		BorderPane pane = new BorderPane();
@@ -69,6 +72,18 @@ public class TeachersPanel {
 		});
 
 		Menu edit = new Menu("Edit");
+		Menu language = new Menu("Language");
+
+		MenuItem itmShqip = new MenuItem("Shqip");
+		MenuItem itmEnglish = new MenuItem("English");
+		language.getItems().addAll(itmShqip, itmEnglish);
+		edit.getItems().add(language);
+		itmShqip.setOnAction(e -> {
+			I18N.setLocale(new Locale("al"));
+		});
+		itmEnglish.setOnAction(e ->{
+			I18N.setLocale(new Locale("en"));
+		});
 
 		MenuItem itmStudents = new MenuItem("Students Panel");
 		itmStudents.setOnAction(e -> {

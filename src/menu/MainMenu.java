@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.Locale;
+
 import Help.teacherHelp;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -13,6 +15,18 @@ public class MainMenu
 		MenuBar menuBar = new MenuBar();
 		Menu file = new Menu("File");
 		Menu edit = new Menu("Edit");
+		Menu language = new Menu("Language");
+
+		MenuItem itmShqip = new MenuItem("Shqip");
+		MenuItem itmEnglish = new MenuItem("English");
+		language.getItems().addAll(itmShqip, itmEnglish);
+		edit.getItems().add(language);
+		itmShqip.setOnAction(e -> {
+			I18N.setLocale(new Locale("al"));
+		});
+		itmEnglish.setOnAction(e ->{
+			I18N.setLocale(new Locale("en"));
+		});
 		Menu help = new Menu("Help");
 		MenuItem itmAbout = new MenuItem("About");
 		itmAbout.setOnAction(e->{

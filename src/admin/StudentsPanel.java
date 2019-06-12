@@ -37,11 +37,10 @@ public class StudentsPanel {
 	ComboBox<String> languagesCbo = new ComboBox<>();
 
 	private Label studentLabel = new Label("Student Registration Details");
-	private Button btnAddNew = new Button("Add New");
-	private Button btnEdit = new Button("Edit");
-	private Button btnDelete = new Button("Delete");
-	private Button btnClear = new Button("Clear");
-	private Button btnSave = new Button("Save");
+	private Button btnEdit = new Button();
+	private Button btnDelete = new Button();
+	private Button btnClear = new Button();
+	private Button btnSave = new Button();
 	private TextField studentID = new TextField();
 	private TextField studentName = new TextField();
 	private TextField studentSurname = new TextField();
@@ -55,7 +54,7 @@ public class StudentsPanel {
 	private TextField age = new TextField();
 
 	private TableView studentsTable = new TableView();
-	
+
 	public void createStage() {
 
 		ObservableList<String> applicationLanguages = FXCollections.observableArrayList();
@@ -228,16 +227,17 @@ public class StudentsPanel {
 		showStudents();
 
 		VBox vbox = new VBox();
-
+		btnEdit = I18N.getButton("edit");
+		btnDelete = I18N.getButton("delete");
+		btnClear = I18N.getButton("clear");
+		btnSave = I18N.getButton("save");
 		HBox hbox = new HBox();
-		Button btnAddNew = new Button("AddNew");
+		Button btnAddNew = I18N.getButton("addnew");
 		btnAddNew.setStyle("-fx-background-color:green;-fx-text-fill:white;");
-		Button btnEdit = new Button("Edit");
 		btnEdit.setStyle("-fx-background-color:green;-fx-text-fill:white;");
-		Button btnDelete = new Button("Delete");
 		btnDelete.setStyle("-fx-background-color:red;-fx-text-fill:white;");
 		VBox vbox2 = new VBox();
-		Label label_1 = new Label("Student Registration Details");
+		Label label_1 = I18N.getLabel("studentRegistrationDetails");
 		label_1.setStyle("-fx-text-fill:#4682B4;-fx-font-weight:bold;-fx-font-size:22;");
 		label_1.setPadding(new Insets(2, 18, 1, 25));
 		hbox.getChildren().addAll(btnAddNew, btnEdit, btnDelete);
@@ -246,7 +246,7 @@ public class StudentsPanel {
 		vbox2.getChildren().add(hbox);
 		vbox2.getChildren().add(label_1);
 
-		Label label_2 = new Label("Personal Information");
+		Label label_2 = I18N.getLabel("personalInformation");
 		label_2.setStyle("-fx-text-fill:#800080;-fx-font-weight:bold;-fx-font-size:18;");
 		label_2.setPadding(new Insets(4, 1, 1, 4));
 
