@@ -14,15 +14,19 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import teacher.FinalGrade;
 import teacher.Grades;
 
 public class StudentResults {
 	// Table views
 	private TableView gradesTable = new TableView();
+	private TableView finalGradesTable = new TableView();
 	private BorderPane bp = new BorderPane();
 
 	public void openStudentResults() {
@@ -160,16 +164,38 @@ public class StudentResults {
 		gradesTable.setPrefWidth(1360);
 		gradesTable.setPrefHeight(200);
 
+		//==================  Final Grade  ===============================
+		
+		// Grades table
+
+		TableColumn<String, Grades> column01 = new TableColumn<>("studentID");
+		column1.setCellValueFactory(new PropertyValueFactory("studentID"));
+		column1.setPrefWidth(120);
+
+		TableColumn<String, Grades> column02 = new TableColumn<>("subjectID");
+		column2.setCellValueFactory(new PropertyValueFactory("subjectID"));
+		column2.setPrefWidth(80);
+
+		TableColumn<String, Grades> column03 = new TableColumn<>("finalGrade");
+		column3.setCellValueFactory(new PropertyValueFactory("finalGrade"));
+		column3.setPrefWidth(120);
+
+		finalGradesTable.getColumns().add(column01);
+		finalGradesTable.getColumns().add(column02);
+		finalGradesTable.getColumns().add(column03);
+
+		finalGradesTable.setPrefWidth(320);
+		finalGradesTable.setPrefHeight(200);
+		
+		//==================  /Final Grade  ===============================
+		
+		
 		// Main Pane
-		HBox mainPane = new HBox(10);
-
-		mainPane.getChildren().addAll(gradesTable);
-
-		mainPane.setPadding(new Insets(15, 15, 15, 15));
-
-		showGrades();
-
-		bp.setCenter(mainPane);
+		VBox vbox = new VBox();		
+		
+		vbox.getChildren().add(gradesTable);
+		vbox.getChildren().add(finalGradesTable);
+		bp.setBottom(vbox);
 
 		Scene scene = new Scene(bp);
 		primaryStage.setScene(scene);
@@ -188,4 +214,19 @@ public class StudentResults {
 
 		gradesTable.setItems(gradesList);
 	}
+	
+	public void showFinalGrades()
+	{
+		List<FinalGrade> grades = FinalGrade.getFinalGrades();
+
+		ObservableList<FinalGrade> gradesList = FXCollections.observableArrayList();
+
+		for (int i = 0; i < grades.size(); i++)
+		{
+			gradesList.add(grades.get(i));
+		}
+
+		finalGradesTable.setItems(gradesList);
+	}
+
 }
