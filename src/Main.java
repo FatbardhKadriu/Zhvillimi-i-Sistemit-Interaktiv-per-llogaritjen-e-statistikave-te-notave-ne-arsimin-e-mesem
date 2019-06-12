@@ -39,11 +39,8 @@ public class Main extends Application{
 		teacherImage.setFitWidth(100);
 		HBox pane = new HBox(30);
 		admin = new Button("Admin", adminImage);
-			admin.setStyle("-fx-font-size:15;-fx-background-color:white;-fx-font-weight:bold;-fx-opacity:1;");
 		teacher = new Button("Teacher", teacherImage);
-			teacher.setStyle("-fx-font-size:15;-fx-background-color:white;-fx-font-weight:bold;-fx-opacity:1;");
 		student = new Button("Student", studentImage);
-			student.setStyle("-fx-font-size:15;-fx-background-color:white;-fx-font-weight:bold;-fx-opacity:1;");
 		admin.setOnAction(e -> {
 			MainLogin.createStage();
 		});
@@ -54,11 +51,11 @@ public class Main extends Application{
 			StudentLogin.createStage();
 		});
 		
-	
 		pane.getChildren().addAll(admin, teacher, student);
 		pane.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(pane, 600, 300);
-			pane.setStyle("-fx-background-image: url(images/main-background.4jpeg.jpeg);-fx-background-position:top;");
+		scene.getStylesheets().add("style.css");
+		pane.setStyle("-fx-background-image: url(images/main-background.4jpeg.jpeg);-fx-background-position:top;");
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Main");
 		primaryStage.show();

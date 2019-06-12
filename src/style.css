@@ -1,5 +1,6 @@
 .root{
-    -fx-background-image: url(images/admin-login-background-images-1.jpg);
+    -fx-background-image: url(images/main-background.4jpeg.jpeg);
+    -fx-background-position:top;
     -fx-background-size:cover;
 }
 .label{
@@ -7,9 +8,12 @@
     -fx-font-size:15px;
 }
 .button{
-    -fx-background-color:yellow;
+    -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-background-radius: 4;
+    -fx-font-size:15;
+    -fx-font-weight:bold;
+    -fx-opacity:1;
 }
 .button-blue{
     -fx-background-color:rgba(15, 15, 56, 0.384);
@@ -28,4 +32,7 @@
     -fx-text-fill: red;
     -fx-font-weight:bold;
     -fx-font-size:20px;
+}
+.button-teacher{
+    -fx-background-color: transparent;
 }
