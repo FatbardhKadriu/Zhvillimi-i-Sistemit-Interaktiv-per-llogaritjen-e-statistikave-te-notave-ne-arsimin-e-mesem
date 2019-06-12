@@ -225,17 +225,12 @@ FROM mjaftueshem, mire, shumemire, shkelqyeshem;
 
 SELECT * FROM CountStudents;
 
+CREATE VIEW NrLendeve AS
+SELECT subjectID, count(teacherID) AS 'NumriProfesoreve'
+FROM Teacher
+GROUP BY(subjectID);
 
-CREATE VIEW periodaPare AS
-SELECT subjectID, periodID, COUNT(studentID) AS 'periodaPare'
-FROM Grades
-GROUP BY periodID, subjectID;
+SELECT * from Nrlendeve;
 
-SELECT * FROM periodaPare;
+select * from teacher;
 
-CREATE VIEW periodaDyte AS
-SELECT subjectID, periodID, COUNT(studentID) AS 'periodaDyte'
-FROM Grades
-GROUP BY periodID, subjectID;
-
-SELECT * FROM periodaDyte;
