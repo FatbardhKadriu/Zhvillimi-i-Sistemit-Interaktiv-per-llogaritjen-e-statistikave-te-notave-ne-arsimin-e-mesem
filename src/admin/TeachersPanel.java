@@ -5,8 +5,6 @@ import java.util.Locale;
 
 import Help.About;
 import Help.AdminHelp;
-import database.Hash;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -27,20 +25,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import menu.I18N;
 
 public class TeachersPanel {
 	private Label teachersLabel = new Label("Teachers Registration Details");
-	private Button btnAddNew = new Button("Add New");
-	private Button btnEdit = new Button("Edit");
-	private Button btnDelete = new Button("Delete");
-	private Button btnClear = new Button("Clear");
+	private Button btnAddNew = new Button();
+	private Button btnEdit = new Button();
+	private Button btnDelete = new Button();
+	private Button btnClear = new Button();
 //	private Button btnSave = new Button("Save");
 	private Button btnSave = new Button();
-	static Label label_2 = new Label("Personal Information");
+	static Label label_2 = new Label();
 
 	private TextField teacherID = new TextField();
 	private TextField teacherName = new TextField();
@@ -81,7 +78,7 @@ public class TeachersPanel {
 		itmShqip.setOnAction(e -> {
 			I18N.setLocale(new Locale("al"));
 		});
-		itmEnglish.setOnAction(e ->{
+		itmEnglish.setOnAction(e -> {
 			I18N.setLocale(new Locale("en"));
 		});
 
@@ -191,16 +188,17 @@ public class TeachersPanel {
 		showTeachers();
 
 		VBox vbox = new VBox();
-
+		btnEdit = I18N.getButton("edit");
+		btnDelete = I18N.getButton("delete");
+		btnClear = I18N.getButton("clear");
+		btnSave = I18N.getButton("save");
 		HBox hbox = new HBox();
-		Button btnAddNew = new Button("AddNew");
+		Button btnAddNew = I18N.getButton("addnew");
 		btnAddNew.setStyle("-fx-background-color:green;-fx-text-fill:white;");
-		Button btnEdit = new Button("Edit");
 		btnEdit.setStyle("-fx-background-color:green;-fx-text-fill:white;");
-		Button btnDelete = new Button("Delete");
 		btnDelete.setStyle("-fx-background-color:red;-fx-text-fill:white;");
 		VBox vbox2 = new VBox();
-		Label label_1 = new Label("Teachers Details");
+		Label label_1 = I18N.getLabel("teachersDetails");
 		label_1.setStyle("-fx-font-weight:bold;-fx-font-size:25;");
 		label_1.setPadding(new Insets(2, 18, 1, 25));
 		hbox.getChildren().addAll(btnAddNew, btnEdit, btnDelete);
@@ -209,7 +207,7 @@ public class TeachersPanel {
 		vbox2.getChildren().add(hbox);
 		vbox2.getChildren().add(label_1);
 
-		Label label_2 = new Label("Teacher Information");
+		Label label_2 = I18N.getLabel("personalInformation");
 		label_2.setStyle("-fx-font-weight:bold;-fx-font-size:22;");
 		label_2.setPadding(new Insets(4, 1, 1, 4));
 
