@@ -81,7 +81,6 @@ public class Main extends Application {
 			new StudentLogin().createStage();
 		});
 
-		
 		pane.addRow(0, adminImage, teacherImage, studentImage);
 		pane.addRow(1, admin, teacher, student);
 		pane.setAlignment(Pos.CENTER);

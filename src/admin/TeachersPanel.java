@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import Help.About;
 import Help.AdminHelp;
+import Help.HelpAdminEn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -94,8 +95,12 @@ public class TeachersPanel {
 		MenuItem itmAbout = I18N.getMenuItem("about");
 		MenuItem itmHelp = I18N.getMenuItem("help");
 		itmHelp.setOnAction(e -> {
-			AdminHelp.about();
-
+			if(itmHelp.getText().equals("Help"))
+			{
+				HelpAdminEn.about();
+			}else {
+				AdminHelp.about();
+			}
 		});
 
 		itmAbout.setOnAction(e -> {
