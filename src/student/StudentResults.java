@@ -20,12 +20,13 @@ import javafx.stage.Stage;
 import menu.MainMenu;
 import teacher.Grades;
 
-public class StudentResults extends Application {
+public class StudentResults{
 	// Table views
 	private TableView gradesTable = new TableView();
 	private BorderPane bp = new BorderPane();
-	@Override
-	public void start(Stage primaryStage) {
+	
+	public void openStudentResults() {
+		Stage primaryStage = new Stage();
 		MenuBar menuBar = new MenuBar();
 
 		Menu file = new Menu("File");

@@ -31,8 +31,9 @@ public class StudentLogin {
 	private Button btnLogin = new Button("Login");
 	private Label title = new Label("Login as Student");
 	private Stage mainStage;
-
+	private StudentResults obj = new StudentResults();
 	public void createStage() {
+		
 		Stage primaryStage = new Stage();
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
@@ -87,7 +88,7 @@ public class StudentLogin {
 //				mainStage.show();
 //				mainStage.hide();
 //				StudentsPanel.createStage();
-				System.out.println("Jeni kyqur me sukses");
+				obj.openStudentResults();
 
 //				System.exit(1);
 			} else {
