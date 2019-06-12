@@ -3,6 +3,7 @@ package menu;
 import java.util.Locale;
 
 import Help.About;
+import Help.HelpTeacher;
 import Help.teacherHelp;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -34,8 +35,16 @@ public class MainMenu
 		itmAbout.setOnAction(e->{
 			obj.openAbout();	
 		});
+	help.setOnAction(e -> {
+			if(help.getText().equals("Help"))
+			{
+				HelpTeacher.about();
+			}else {
+				teacherHelp.about();
+			}
+		});
 		
-		
+	
 		menuBar.getMenus().addAll(file, edit, help);
 	
 		return menuBar;

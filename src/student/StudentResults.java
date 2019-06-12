@@ -3,6 +3,7 @@ package student;
 import java.util.List;
 
 import Help.About;
+import Help.HelpStudentEn;
 import Help.studentHelp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,7 +52,12 @@ public class StudentResults {
 		Menu help = new Menu("Help");
 		MenuItem itmHelp = new MenuItem("Help");
 		itmHelp.setOnAction(e -> {
-			studentHelp.about();
+			if(itmHelp.getText().equals("Help")) {
+				HelpStudentEn.about();
+			}else {
+				studentHelp.about();
+			}
+			
 		});
 		About obj = new About();
 		MenuItem itmAbout = new MenuItem("About");

@@ -29,6 +29,8 @@ public class StudentLogin {
 	private Label ErrorResult = new Label();
 	private Button btnLogin = new Button();
 	private Label title = new Label();
+	private Label idLbl = new Label();
+	private Label passLbl = new Label();
 	private Stage mainStage;
 	private StudentResults obj = new StudentResults();
 	public void createStage() {
@@ -38,9 +40,11 @@ public class StudentLogin {
 		mainStage = primaryStage;
 		GridPane loginPane = new GridPane();
 		btnLogin=I18N.getButton("login");
-		Label title=I18N.getLabel("loginAsStudent");
-		loginPane.addRow(0, new Label("ID"), studentID);
-		loginPane.addRow(1, new Label("Password"), password);
+		title=I18N.getLabel("loginAsStudent");
+		idLbl = I18N.getLabel("nrID");
+	    passLbl = I18N.getLabel("password");
+		loginPane.addRow(0, idLbl, studentID);
+		loginPane.addRow(1, passLbl,  password);
 		loginPane.add(btnLogin, 1, 3);
 		loginPane.add(ErrorResult, 1, 4);
 		loginPane.setHgap(35);
