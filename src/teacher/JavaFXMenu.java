@@ -3,11 +3,12 @@ package teacher;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -30,6 +31,7 @@ public class JavaFXMenu
 	public void createStage()
 	{
 		Stage stage = new Stage();
+		ScrollPane scrollPane = new ScrollPane();
 		
 		MenuBar menuBar = new MenuBar();
 		Menu menu1 = new Menu("Menu 1");
@@ -37,7 +39,18 @@ public class JavaFXMenu
 
 		root.setTop(MainMenu.mainMenu());
 		root.setLeft(Menu());
-		stage.setScene(new Scene(root));
+		
+		// Set content for ScrollPane
+        scrollPane.setContent(root);
+ 
+        // Always show vertical scroll bar
+        scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+        
+        // Horizontal scroll bar is only displayed when needed
+        scrollPane.setHbarPolicy(ScrollBarPolicy.ALWAYS);
+		
+		Scene scene = new Scene(scrollPane);
+		stage.setScene(scene);
 		stage.show();
 	}
 
