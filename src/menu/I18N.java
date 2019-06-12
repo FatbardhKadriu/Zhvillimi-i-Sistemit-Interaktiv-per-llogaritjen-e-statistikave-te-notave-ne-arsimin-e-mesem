@@ -14,6 +14,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 
 public class I18N {
@@ -72,12 +74,23 @@ public class I18N {
 		btn.textProperty().bind(createStringBinding(key, args));
 		return btn;
 	}
-	public static TableColumn getTblColumn(String key, Object...args)
-	{
+
+	public static TableColumn getTblColumn(String key, Object... args) {
 		TableColumn<String, StudentsTable> column = new TableColumn<>();
 		column.textProperty().bind(createStringBinding(key, args));
 		return column;
-		
+	}
+
+	public static Menu getMenu(String key, Object... args) {
+		Menu menu = new Menu();
+		menu.textProperty().bind(createStringBinding(key, args));
+		return menu;
+	}
+	public static MenuItem getMenuItem(String key, Object...args)
+	{
+		MenuItem menuItem = new MenuItem();
+		menuItem.textProperty().bind(createStringBinding(key,args));
+		return menuItem;
 	}
 
 }

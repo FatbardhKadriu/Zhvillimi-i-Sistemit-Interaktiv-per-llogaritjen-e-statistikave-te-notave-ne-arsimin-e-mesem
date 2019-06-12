@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Locale;
 
 import Help.About;
+import Help.AdminHelp;
+import Help.HelpAdminEn;
 import Help.studentHelp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,18 +70,18 @@ public class StudentsPanel {
 
 		MenuBar menuBar = new MenuBar();
 
-		Menu file = new Menu("File");
+		Menu file = I18N.getMenu("file");
 
-		MenuItem itmClose = new MenuItem("Close");
+		MenuItem itmClose = I18N.getMenuItem("close");
 		itmClose.setOnAction(e -> {
 			stage.hide();
 		});
 
-		Menu edit = new Menu("Edit");
-		Menu language = new Menu("Language");
+		Menu edit = I18N.getMenu("editMenu");
+		Menu language = I18N.getMenu("language");
 
-		MenuItem itmShqip = new MenuItem("Shqip");
-		MenuItem itmEnglish = new MenuItem("English");
+		MenuItem itmShqip = I18N.getMenuItem("shqip");
+		MenuItem itmEnglish =I18N.getMenuItem("english");
 		language.getItems().addAll(itmShqip, itmEnglish);
 		edit.getItems().add(language);
 		itmShqip.setOnAction(e -> {
@@ -90,16 +92,22 @@ public class StudentsPanel {
 		});
 
 
-		MenuItem itmTeacher = new MenuItem("Teacher Panel");
+		MenuItem itmTeacher = I18N.getMenuItem("teachersPanel");
 		itmTeacher.setOnAction(e -> {
 			new TeachersPanel().createStage();
 		});
-		MenuItem itmAbout = new MenuItem("About");
-		MenuItem itmHelp = new MenuItem("Help");
-		itmHelp.setOnAction(e -> {
+		MenuItem itmAbout = I18N.getMenuItem("about");
+		MenuItem itmHelp = I18N.getMenuItem("help");
 
-			studentHelp.about();
+		itmHelp.setOnAction(e -> {
+			if(itmHelp.getText().equals("Help"))
+			{
+				HelpAdminEn.about();
+			}else {
+				AdminHelp.about();
+			}
 		});
+	
 		About obj = new About();
 		itmAbout.setOnAction(e -> {
 			obj.openAbout();
@@ -329,6 +337,17 @@ public class StudentsPanel {
 		mainPane.getChildren().addAll(vboxMain, studentsTable);
 		pane.setTop(menuBar);
 		pane.setBottom(mainPane);
+
+		pane.setOnKeyPressed(e -> {
+			if(e.isControlDown() && e.getCode() == KeyCode.H) {
+				if(itmHelp.getText().equals("Help"))
+				{
+					HelpAdminEn.about();
+				}else {
+					AdminHelp.about();
+				}
+			}
+		});
 		Scene scene = new Scene(pane);
 
 		stage.setTitle("Students Panel");

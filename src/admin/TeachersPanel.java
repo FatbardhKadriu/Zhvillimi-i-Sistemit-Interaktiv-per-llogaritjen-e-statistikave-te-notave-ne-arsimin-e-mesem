@@ -64,18 +64,18 @@ public class TeachersPanel {
 
 		MenuBar menuBar = new MenuBar();
 
-		Menu file = new Menu("File");
+		Menu file = I18N.getMenu("file");
 
-		MenuItem itmClose = new MenuItem("Close");
+		MenuItem itmClose = I18N.getMenuItem("close");
 		itmClose.setOnAction(e -> {
 			stage.hide();
 		});
 
-		Menu edit = new Menu("Edit");
-		Menu language = new Menu("Language");
+		Menu edit = I18N.getMenu("editMenu");
+		Menu language = I18N.getMenu("language");
 
-		MenuItem itmShqip = new MenuItem("Shqip");
-		MenuItem itmEnglish = new MenuItem("English");
+		MenuItem itmShqip = I18N.getMenuItem("shqip");
+		MenuItem itmEnglish = I18N.getMenuItem("english");
 		language.getItems().addAll(itmShqip, itmEnglish);
 		edit.getItems().add(language);
 		itmShqip.setOnAction(e -> {
@@ -85,15 +85,15 @@ public class TeachersPanel {
 			I18N.setLocale(new Locale("en"));
 		});
 
-		MenuItem itmStudents = new MenuItem("Students Panel");
+		MenuItem itmStudents = I18N.getMenuItem("studentsPanel");
 		itmStudents.setOnAction(e -> {
 			new StudentsPanel().createStage();
 		});
 
-		Menu help = new Menu("Help");
+		Menu help = I18N.getMenu("help");
 
-		MenuItem itmAbout = new MenuItem("About");
-		MenuItem itmHelp = new MenuItem("Help");
+		MenuItem itmAbout = I18N.getMenuItem("about");
+		MenuItem itmHelp = I18N.getMenuItem("help");
 		itmHelp.setOnAction(e -> {
 			AdminHelp.about();
 
