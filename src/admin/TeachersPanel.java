@@ -29,6 +29,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import menu.I18N;
 
 public class TeachersPanel {
 	private Label teachersLabel = new Label("Teachers Registration Details");
@@ -198,21 +199,21 @@ public class TeachersPanel {
 		label_2.setPadding(new Insets(4, 1, 1, 4));
 
 		GridPane gridPane1 = new GridPane();
-		gridPane1.addRow(0, new Label("ID"));
+		gridPane1.addRow(0, I18N.getLabel("nrID"));
 		gridPane1.addRow(0, teacherID);
-		gridPane1.addRow(1, new Label("First Name"));
+		gridPane1.addRow(1, I18N.getLabel("firstname"));
 		gridPane1.addRow(1, teacherName);
-		gridPane1.addRow(2, new Label("Last Name"));
+		gridPane1.addRow(2, I18N.getLabel("fastname"));
 		gridPane1.addRow(2, teacherSurname);
-		gridPane1.addRow(3, new Label("Phone Number"));
+		gridPane1.addRow(3, I18N.getLabel("phone"));
 		gridPane1.addRow(3, phoneNumber);
-		gridPane1.addRow(4, new Label("Email"));
+		gridPane1.addRow(4, I18N.getLabel("email"));
 		gridPane1.addRow(4, email);
-		gridPane1.addRow(5, new Label("Password"));
+		gridPane1.addRow(5, I18N.getLabel("password"));
 		gridPane1.addRow(5, password);
-		gridPane1.addRow(6, new Label("Address ID"));
+		gridPane1.addRow(6, I18N.getLabel("adress"));
 		gridPane1.addRow(6, addressID);
-		gridPane1.addRow(7, new Label("Subject ID"));
+		gridPane1.addRow(7, I18N.getLabel("subjectid"));
 		gridPane1.addRow(7, subjectID);
 
 		gridPane1.setPadding(new Insets(4, 12, 4, 22));
