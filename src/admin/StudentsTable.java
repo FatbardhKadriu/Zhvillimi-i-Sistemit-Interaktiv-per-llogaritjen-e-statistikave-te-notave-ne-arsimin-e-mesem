@@ -1,6 +1,8 @@
 package admin;
 
 import database.DBConnection;
+import database.Hash;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -137,7 +139,7 @@ public class StudentsTable {
 			preparedStatement.setString(4, gender);
 			preparedStatement.setString(5, phoneNumber);
 			preparedStatement.setString(6, email);
-			preparedStatement.setString(7, password);
+			preparedStatement.setString(7, Hash.SHA1(password));
 			preparedStatement.setString(8, classRoomNumber);
 			preparedStatement.setString(9, addressID);
 			preparedStatement.setString(10, birthDate);
@@ -164,7 +166,7 @@ public class StudentsTable {
 			preparedStatement.setString(3, gender);
 			preparedStatement.setString(4, phoneNumber);
 			preparedStatement.setString(5, email);
-			preparedStatement.setString(6, password);
+			preparedStatement.setString(6, Hash.SHA1(password));
 			preparedStatement.setString(7, classRoomNumber);
 			preparedStatement.setString(8, addressID);
 			preparedStatement.setString(9, birthDate);

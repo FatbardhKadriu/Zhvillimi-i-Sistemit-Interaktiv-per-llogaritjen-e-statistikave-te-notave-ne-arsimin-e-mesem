@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import database.DBConnection;
+import database.Hash;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -71,7 +72,7 @@ public class TeacherLogin
 		{
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
 			preparedStatement.setString(1, email.getText());
-			preparedStatement.setString(2, password.getText());
+			preparedStatement.setString(2, Hash.SHA1(password.getText()));
 
 			ResultSet result = preparedStatement.executeQuery();
 

@@ -1,6 +1,8 @@
 package admin;
 
 import database.DBConnection;
+import database.Hash;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,7 +71,7 @@ public class MainLogin {
 
 			PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(query);
 			preparedStatement.setString(1, email.getText());
-			preparedStatement.setString(2, password.getText());
+			preparedStatement.setString(2, Hash.SHA1(password.getText()));
 
 			ResultSet result = preparedStatement.executeQuery();
 

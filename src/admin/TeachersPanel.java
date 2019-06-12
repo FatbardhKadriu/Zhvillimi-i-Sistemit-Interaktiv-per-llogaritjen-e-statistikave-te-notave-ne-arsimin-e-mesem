@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -42,10 +43,9 @@ public class TeachersPanel {
 	private TextField teacherSurname = new TextField();
 	private TextField phoneNumber = new TextField();
 	private TextField email = new TextField();
-	private TextField password = new TextField();
+	private PasswordField password = new PasswordField();
 	private TextField addressID = new TextField();
 	private TextField subjectID = new TextField();
-
 	private TableView teachersTable = new TableView();
 
 	public void createStage() {
@@ -81,7 +81,7 @@ public class TeachersPanel {
 			AdminHelp.about();
 
 		});
-		
+
 		itmAbout.setOnAction(e -> {
 			About.about();
 
