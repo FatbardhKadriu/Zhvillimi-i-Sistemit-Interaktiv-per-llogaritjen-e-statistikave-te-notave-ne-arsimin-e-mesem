@@ -2,6 +2,7 @@ package admin;
 
 import java.util.List;
 
+import Help.About;
 import Help.AdminHelp;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -75,8 +76,14 @@ public class TeachersPanel {
 		Menu help = new Menu("Help");
 
 		MenuItem itmAbout = new MenuItem("About");
-		itmAbout.setOnAction(e -> {
+		MenuItem itmHelp = new MenuItem("Help");
+		itmHelp.setOnAction(e -> {
 			AdminHelp.about();
+
+		});
+		
+		itmAbout.setOnAction(e -> {
+			About.about();
 
 		});
 		pane.setOnKeyPressed(e -> {
@@ -92,6 +99,7 @@ public class TeachersPanel {
 		file.getItems().addAll(itmClose);
 		edit.getItems().addAll(itmStudents);
 		help.getItems().addAll(itmAbout);
+		help.getItems().addAll(itmHelp);
 
 		menuBar.getMenus().addAll(file, edit, help);
 
