@@ -52,8 +52,7 @@ public class TeachersPanel {
 	public void createStage() {
 
 		About obj = new About();
-		
-		
+
 		btnSave = I18N.getButton("save");
 		Stage stage = new Stage();
 
@@ -123,48 +122,36 @@ public class TeachersPanel {
 		root.setTop(menuBar);
 
 		TableColumn<String, StudentsTable> column1 = I18N.getTblColumn("nrID");
-		column1.setCellValueFactory(new PropertyValueFactory("studentID"));
+		column1.setCellValueFactory(new PropertyValueFactory("teacherID"));
 		column1.setPrefWidth(60);
 
 		TableColumn<String, StudentsTable> column2 = I18N.getTblColumn("firstname");
-		column2.setCellValueFactory(new PropertyValueFactory("studentName"));
+		column2.setCellValueFactory(new PropertyValueFactory("teacherName"));
 		column2.setPrefWidth(150);
 
-		TableColumn<String, StudentsTable> column3 =  I18N.getTblColumn("fastname");
-		column3.setCellValueFactory(new PropertyValueFactory("studentSurname"));
+		TableColumn<String, StudentsTable> column3 = I18N.getTblColumn("fastname");
+		column3.setCellValueFactory(new PropertyValueFactory("teacherSurname"));
 		column3.setPrefWidth(150);
 
-		TableColumn<String, StudentsTable> column4 =  I18N.getTblColumn("gender");
-		column4.setCellValueFactory(new PropertyValueFactory("gender"));
+		TableColumn<String, StudentsTable> column4 = I18N.getTblColumn("phone");
+		column4.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
 		column4.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column5 =  I18N.getTblColumn("phone");
-		column5.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
+		TableColumn<String, StudentsTable> column5 = I18N.getTblColumn("email");
+		column5.setCellValueFactory(new PropertyValueFactory("email"));
 		column5.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column6 =  I18N.getTblColumn("email");
-		column6.setCellValueFactory(new PropertyValueFactory("email"));
+		TableColumn<String, StudentsTable> column6 = I18N.getTblColumn("password");
+		column6.setCellValueFactory(new PropertyValueFactory("password"));
 		column6.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column7 =  I18N.getTblColumn("password");
-		column7.setCellValueFactory(new PropertyValueFactory("password"));
+		TableColumn<String, StudentsTable> column7 = I18N.getTblColumn("adress");
+		column7.setCellValueFactory(new PropertyValueFactory("addressID"));
 		column7.setPrefWidth(120);
 
-		TableColumn<String, StudentsTable> column8 =  I18N.getTblColumn("classroom");
-		column8.setCellValueFactory(new PropertyValueFactory("classRoomNumber"));
+		TableColumn<String, StudentsTable> column8 = I18N.getTblColumn("subjectid");
+		column8.setCellValueFactory(new PropertyValueFactory("subjectID"));
 		column8.setPrefWidth(120);
-
-		TableColumn<String, StudentsTable> column9 =  I18N.getTblColumn("adress");
-		column9.setCellValueFactory(new PropertyValueFactory("addressID"));
-		column9.setPrefWidth(120);
-
-		TableColumn<String, StudentsTable> column10 =  I18N.getTblColumn("birthdate");
-		column10.setCellValueFactory(new PropertyValueFactory("birthDate"));
-		column10.setPrefWidth(120);
-
-		TableColumn<Integer, StudentsTable> column11 =  I18N.getTblColumn("age");
-		column11.setCellValueFactory(new PropertyValueFactory("age"));
-		column1.setPrefWidth(120);
 
 		teachersTable.getColumns().add(column1);
 		teachersTable.getColumns().add(column2);

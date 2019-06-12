@@ -20,23 +20,26 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import menu.I18N;
 
 public class MainLogin {
 
 	private TextField administratorID = new TextField();
 	private PasswordField password = new PasswordField();
 	private Label ErrorResult = new Label();
-	private Button btnLogin = new Button("Login");
-	private Label title = new Label("Login as Administrator");
+	private Button btnLogin = new Button();
+	private Label title = new Label();
 	private Stage mainStage;
 
 	public void createStage() {
 		Stage primaryStage = new Stage();
+		btnLogin = I18N.getButton("login");
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
 		GridPane loginPane = new GridPane();
-		loginPane.addRow(0, new Label("ID"), administratorID);
-		loginPane.addRow(1, new Label("Password"), password);
+		title = I18N.getLabel("loginAsAdministartor");
+		loginPane.addRow(0, I18N.getLabel("nrID"), administratorID);
+		loginPane.addRow(1, I18N.getLabel("password"), password);
 		loginPane.add(btnLogin, 1, 3);
 		loginPane.add(ErrorResult, 1, 4);
 		loginPane.setHgap(35);

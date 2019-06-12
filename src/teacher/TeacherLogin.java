@@ -39,8 +39,8 @@ public class TeacherLogin
 		GridPane loginPane = new GridPane();
 		btnLogin=I18N.getButton("login");
 		Label title=I18N.getLabel("loginAsTeacher");
-		loginPane.addRow(0, new Label("ID"), teacherID);
-		loginPane.addRow(1, new Label("Password"), password);
+		loginPane.addRow(0, I18N.getLabel("nrID"), teacherID);
+		loginPane.addRow(1, I18N.getLabel("password"), password);
 		loginPane.add(btnLogin, 1, 3);
 		loginPane.add(ErrorResult, 1, 4);
 		loginPane.setHgap(35);
