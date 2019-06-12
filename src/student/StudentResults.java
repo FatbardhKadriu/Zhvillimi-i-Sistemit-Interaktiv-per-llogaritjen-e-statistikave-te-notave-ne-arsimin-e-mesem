@@ -2,7 +2,8 @@ package student;
 
 import java.util.List;
 
-import javafx.application.Application;
+import Help.About;
+import Help.studentHelp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -17,14 +18,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import menu.MainMenu;
 import teacher.Grades;
 
-public class StudentResults{
+public class StudentResults {
 	// Table views
 	private TableView gradesTable = new TableView();
 	private BorderPane bp = new BorderPane();
-	
+
 	public void openStudentResults() {
 		Stage primaryStage = new Stage();
 		MenuBar menuBar = new MenuBar();
@@ -34,6 +34,9 @@ public class StudentResults{
 		MenuItem itmNew = new MenuItem("New");
 		MenuItem itmSave = new MenuItem("Save");
 		MenuItem itmClose = new MenuItem("Close");
+		itmClose.setOnAction(e -> {
+			primaryStage.hide();
+		});
 
 		Menu edit = new Menu("Edit");
 
@@ -42,6 +45,18 @@ public class StudentResults{
 		MenuItem itmPaste = new MenuItem("Paste");
 
 		Menu help = new Menu("Help");
+		MenuItem itmHelp = new MenuItem("Help");
+		itmHelp.setOnAction(e -> {
+			studentHelp.about();
+		});
+
+		MenuItem itmAbout = new MenuItem("About");
+		itmAbout.setOnAction(e -> {
+			About.about();
+
+		});
+		help.getItems().addAll(itmAbout);
+		help.getItems().addAll(itmHelp);
 
 		Menu subSearch = new Menu("Search");
 
@@ -63,7 +78,7 @@ public class StudentResults{
 		edit.getItems().add(subSearch);
 
 		bp.setTop(menuBar);
-		
+
 		// Grades table
 
 		TableColumn<String, Grades> column1 = new TableColumn<>("periodID");
@@ -151,25 +166,23 @@ public class StudentResults{
 		mainPane.getChildren().addAll(gradesTable);
 
 		mainPane.setPadding(new Insets(15, 15, 15, 15));
-		
+
 		showGrades();
-		
+
 		bp.setCenter(mainPane);
-		
+
 		Scene scene = new Scene(bp);
 		primaryStage.setScene(scene);
 
 		primaryStage.show();
 	}
-	
-	public void showGrades()
-	{
+
+	public void showGrades() {
 		List<Grades> grades = Grades.getGrades();
 
 		ObservableList<Grades> gradesList = FXCollections.observableArrayList();
 
-		for (int i = 0; i < grades.size(); i++)
-		{
+		for (int i = 0; i < grades.size(); i++) {
 			gradesList.add(grades.get(i));
 		}
 
