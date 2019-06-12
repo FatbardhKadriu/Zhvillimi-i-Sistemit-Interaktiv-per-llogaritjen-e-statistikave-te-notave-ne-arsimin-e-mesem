@@ -124,63 +124,63 @@ public class GradesTab
 
 		// Grades table
 
-		TableColumn<String, Grades> column1 = new TableColumn<>("periodID");
+		TableColumn<String, Grades> column1 = I18N.getTblColumn("periodid");
 		column1.setCellValueFactory(new PropertyValueFactory("periodID"));
 		column1.setPrefWidth(80);
 
-		TableColumn<String, Grades> column2 = new TableColumn<>("studentID");
+		TableColumn<String, Grades> column2 = I18N.getTblColumn("nrID");
 		column2.setCellValueFactory(new PropertyValueFactory("studentID"));
 		column2.setPrefWidth(120);
 
-		TableColumn<String, Grades> column3 = new TableColumn<>("subjectID");
+		TableColumn<String, Grades> column3 = I18N.getTblColumn("subjectid");
 		column3.setCellValueFactory(new PropertyValueFactory("subjectID"));
 		column3.setPrefWidth(80);
 
-		TableColumn<String, Grades> column4 = new TableColumn<>("commitment");
+		TableColumn<String, Grades> column4 =I18N.getTblColumn("commitment");
 		column4.setCellValueFactory(new PropertyValueFactory("commitment"));
 		column4.setPrefWidth(120);
 
-		TableColumn<String, Grades> column5 = new TableColumn<>("tasks");
+		TableColumn<String, Grades> column5 = I18N.getTblColumn("tasks");
 		column5.setCellValueFactory(new PropertyValueFactory("tasks"));
 		column5.setPrefWidth(60);
 
-		TableColumn<String, Grades> column6 = new TableColumn<>("essay");
+		TableColumn<String, Grades> column6 = I18N.getTblColumn("essay");
 		column6.setCellValueFactory(new PropertyValueFactory("essay"));
 		column6.setPrefWidth(60);
 
-		TableColumn<String, Grades> column7 = new TableColumn<>("debates");
+		TableColumn<String, Grades> column7 = I18N.getTblColumn("debates");
 		column7.setCellValueFactory(new PropertyValueFactory("debates"));
 		column7.setPrefWidth(80);
 
-		TableColumn<String, Grades> column8 = new TableColumn<>("projects");
+		TableColumn<String, Grades> column8 = I18N.getTblColumn("projects");
 		column8.setCellValueFactory(new PropertyValueFactory("projects"));
 		column8.setPrefWidth(80);
 
-		TableColumn<String, Grades> column9 = new TableColumn<>("tests");
+		TableColumn<String, Grades> column9 = I18N.getTblColumn("tests");
 		column9.setCellValueFactory(new PropertyValueFactory("tests"));
 		column9.setPrefWidth(60);
 
-		TableColumn<String, Grades> column10 = new TableColumn<>("quizzess");
+		TableColumn<String, Grades> column10 = I18N.getTblColumn("quzzess");
 		column10.setCellValueFactory(new PropertyValueFactory("quizzess"));
 		column10.setPrefWidth(80);
 
-		TableColumn<String, Grades> column11 = new TableColumn<>("portfolio");
+		TableColumn<String, Grades> column11 = I18N.getTblColumn("portfolio");
 		column11.setCellValueFactory(new PropertyValueFactory("portfolio"));
 		column11.setPrefWidth(100);
 
-		TableColumn<String, Grades> column12 = new TableColumn<>("markPart1");
+		TableColumn<String, Grades> column12 = I18N.getTblColumn("markpart1");
 		column12.setCellValueFactory(new PropertyValueFactory("markPart1"));
 		column12.setPrefWidth(100);
 
-		TableColumn<String, Grades> column13 = new TableColumn<>("finalTest");
+		TableColumn<String, Grades> column13 = I18N.getTblColumn("finaltest");
 		column13.setCellValueFactory(new PropertyValueFactory("finalTest"));
 		column13.setPrefWidth(100);
 
-		TableColumn<String, Grades> column14 = new TableColumn<>("markPart2");
+		TableColumn<String, Grades> column14 = I18N.getTblColumn("markpart2");
 		column14.setCellValueFactory(new PropertyValueFactory("markPart2"));
 		column14.setPrefWidth(100);
 
-		TableColumn<String, Grades> column15 = new TableColumn<>("finalPeriodMark");
+		TableColumn<String, Grades> column15 = I18N.getTblColumn("finalperiodmark");
 		column15.setCellValueFactory(new PropertyValueFactory("finalPeriodMark"));
 		column15.setPrefWidth(140);
 

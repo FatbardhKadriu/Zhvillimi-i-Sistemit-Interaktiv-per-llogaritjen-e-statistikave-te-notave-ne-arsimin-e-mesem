@@ -12,23 +12,22 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import menu.I18N;
 
 public class TeacherLogin
 {
 	private TextField teacherID = new TextField();
 	private PasswordField password = new PasswordField();
 	private Label ErrorResult = new Label();
-	private Button btnLogin = new Button();
-	private Label title = new Label();
+	private Button btnLogin = new Button("Login");
+	private Label title = new Label("Login as Teacher");
 	private Stage mainStage;
 
 	public void createStage()
@@ -37,10 +36,8 @@ public class TeacherLogin
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
 		GridPane loginPane = new GridPane();
-		btnLogin=I18N.getButton("login");
-		Label title=I18N.getLabel("loginAsTeacher");
-		loginPane.addRow(0, I18N.getLabel("nrID"), teacherID);
-		loginPane.addRow(1, I18N.getLabel("password"), password);
+		loginPane.addRow(0, new Label("ID"), teacherID);
+		loginPane.addRow(1, new Label("Password"), password);
 		loginPane.add(btnLogin, 1, 3);
 		loginPane.add(ErrorResult, 1, 4);
 		loginPane.setHgap(35);
