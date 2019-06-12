@@ -1,6 +1,8 @@
 package admin;
 
 import java.util.List;
+import java.util.Locale;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -28,8 +31,11 @@ import javafx.stage.Stage;
 import Help.About;
 import Help.AdminHelp;
 import Help.studentHelp;
+import menu.I18N;
 
 public class StudentsPanel {
+	ComboBox<String> languagesCbo = new ComboBox<>();
+
 	private Label studentLabel = new Label("Student Registration Details");
 	private Button btnAddNew = new Button("Add New");
 	private Button btnEdit = new Button("Edit");
@@ -49,8 +55,13 @@ public class StudentsPanel {
 	private TextField age = new TextField();
 
 	private TableView studentsTable = new TableView();
-
+	
 	public void createStage() {
+
+		ObservableList<String> applicationLanguages = FXCollections.observableArrayList();
+		for (int i = 0; i < I18N.getLocales().size(); i++) {
+			applicationLanguages.add(I18N.getLocales().get(i).getLanguage());
+		}
 
 		BorderPane pane = new BorderPane();
 		Stage stage = new Stage();
@@ -69,6 +80,19 @@ public class StudentsPanel {
 		});
 
 		Menu edit = new Menu("Edit");
+		Menu language = new Menu("Language");
+
+		MenuItem itmShqip = new MenuItem("Shqip");
+		MenuItem itmEnglish = new MenuItem("English");
+		language.getItems().addAll(itmShqip, itmEnglish);
+		edit.getItems().add(language);
+		itmShqip.setOnAction(e -> {
+			I18N.setLocale(new Locale("al"));
+		});
+		itmEnglish.setOnAction(e ->{
+			I18N.setLocale(new Locale("en"));
+		});
+
 
 		MenuItem itmTeacher = new MenuItem("Teacher Panel");
 		itmTeacher.setOnAction(e -> {
@@ -227,27 +251,27 @@ public class StudentsPanel {
 		label_2.setPadding(new Insets(4, 1, 1, 4));
 
 		GridPane gridPane1 = new GridPane();
-		gridPane1.addRow(0, new Label("ID"));
+		gridPane1.addRow(0, I18N.getLabel("nrID"));
 		gridPane1.addRow(0, studentID);
-		gridPane1.addRow(1, new Label("First Name"));
+		gridPane1.addRow(1, I18N.getLabel("firstname"));
 		gridPane1.addRow(1, studentName);
-		gridPane1.addRow(2, new Label("Last Name"));
+		gridPane1.addRow(2, I18N.getLabel("fastname"));
 		gridPane1.addRow(2, studentSurname);
-		gridPane1.addRow(3, new Label("Gender"));
+		gridPane1.addRow(3, I18N.getLabel("gender"));
 		gridPane1.addRow(3, gender);
-		gridPane1.addRow(4, new Label("Phone Number"));
+		gridPane1.addRow(4, I18N.getLabel("phone"));
 		gridPane1.addRow(4, phoneNumber);
-		gridPane1.addRow(5, new Label("Email"));
+		gridPane1.addRow(5, I18N.getLabel("email"));
 		gridPane1.addRow(5, email);
-		gridPane1.addRow(6, new Label("Password"));
+		gridPane1.addRow(6, I18N.getLabel("password"));
 		gridPane1.addRow(6, password);
-		gridPane1.addRow(7, new Label("Class Room"));
+		gridPane1.addRow(7, I18N.getLabel("classroom"));
 		gridPane1.addRow(7, classRoomNumber);
-		gridPane1.addRow(8, new Label("Address ID"));
+		gridPane1.addRow(8, I18N.getLabel("adress"));
 		gridPane1.addRow(8, addressID);
-		gridPane1.addRow(9, new Label("BirthDate"));
+		gridPane1.addRow(9, I18N.getLabel("birthdate"));
 		gridPane1.addRow(9, birthDate);
-		gridPane1.addRow(10, new Label("Age"));
+		gridPane1.addRow(10, I18N.getLabel("age"));
 		gridPane1.addRow(10, age);
 
 		gridPane1.setVgap(10);
