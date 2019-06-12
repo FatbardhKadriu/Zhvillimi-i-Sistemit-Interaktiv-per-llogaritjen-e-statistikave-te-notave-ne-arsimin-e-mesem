@@ -7,7 +7,7 @@
     -fx-font-size:15px;
 }
 .button{
-    -fx-text-fill: black
+    -fx-text-fill: black;
     -fx-background-radius: 4;
     -fx-font-size:15;
     -fx-font-weight:bold;
