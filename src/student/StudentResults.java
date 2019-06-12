@@ -202,7 +202,8 @@ public class StudentResults {
 		vbox.getChildren().add(gradesTable);
 		vbox.getChildren().add(finalGradesTable);
 		bp.setBottom(vbox);
-
+		showGrades();
+		showFinalGrades();
 		Scene scene = new Scene(bp);
 		primaryStage.setScene(scene);
 
@@ -223,16 +224,16 @@ public class StudentResults {
 	
 	public void showFinalGrades()
 	{
-		List<FinalGrade> grades = FinalGrade.getFinalGrades();
+		List<FinalGrade> grades2 = FinalGrade.getFinalGrades();
 
-		ObservableList<FinalGrade> gradesList = FXCollections.observableArrayList();
+		ObservableList<FinalGrade> gradesList2 = FXCollections.observableArrayList();
 
-		for (int i = 0; i < grades.size(); i++)
+		for (int i = 0; i < grades2.size(); i++)
 		{
-			gradesList.add(grades.get(i));
+			gradesList2.add(grades2.get(i));
 		}
 
-		finalGradesTable.setItems(gradesList);
+		finalGradesTable.setItems(gradesList2);
 	}
 
 }

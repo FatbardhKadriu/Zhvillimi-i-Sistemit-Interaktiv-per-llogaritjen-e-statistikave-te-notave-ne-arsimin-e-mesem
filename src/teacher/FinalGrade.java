@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import admin.StudentsTable;
 import database.DBConnection;
 
 public class FinalGrade
@@ -56,7 +57,7 @@ public class FinalGrade
 	{
 		List<FinalGrade> gradeList = new ArrayList();
 
-		String query = "Select * from finalPeriodMark";
+		String query = "Select * from finalGrade";
 
 		try
 		{
