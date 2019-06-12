@@ -2,11 +2,11 @@ package menu;
 
 import java.util.Locale;
 
+import Help.About;
 import Help.teacherHelp;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.KeyCode;
 
 public class MainMenu
 {
@@ -16,6 +16,8 @@ public class MainMenu
 		Menu file = new Menu("File");
 		Menu edit = new Menu("Edit");
 		Menu language = new Menu("Language");
+		
+		About obj = new About();
 
 		MenuItem itmShqip = new MenuItem("Shqip");
 		MenuItem itmEnglish = new MenuItem("English");
@@ -30,7 +32,7 @@ public class MainMenu
 		Menu help = new Menu("Help");
 		MenuItem itmAbout = new MenuItem("About");
 		itmAbout.setOnAction(e->{
-			teacherHelp.about();	
+			obj.openAbout();	
 		});
 		
 		

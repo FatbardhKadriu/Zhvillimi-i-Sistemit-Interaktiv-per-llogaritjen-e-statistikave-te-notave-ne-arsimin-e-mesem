@@ -137,7 +137,7 @@ CREATE TABLE Administrator
     PRIMARY KEY(administratorID));
 
 INSERT INTO Administrator VALUES 
-('','bardhi','bardhi','052887890c09cb97fde4008cf34823285aa91d0e');
+('1','bardhi','bardhi','052887890c09cb97fde4008cf34823285aa91d0e');
 
 
 INSERT INTO Subjects VALUES

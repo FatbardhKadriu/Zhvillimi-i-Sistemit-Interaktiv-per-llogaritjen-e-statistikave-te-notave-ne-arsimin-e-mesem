@@ -51,6 +51,9 @@ public class TeachersPanel {
 
 	public void createStage() {
 
+		About obj = new About();
+		
+		
 		btnSave = I18N.getButton("save");
 		Stage stage = new Stage();
 
@@ -97,12 +100,12 @@ public class TeachersPanel {
 		});
 
 		itmAbout.setOnAction(e -> {
-			About.about();
+			obj.openAbout();
 
 		});
 		pane.setOnKeyPressed(e -> {
 			if (e.getCode() == KeyCode.F1) {
-				AdminHelp.about();
+				obj.openAbout();
 
 			}
 			if (e.isAltDown() && e.getCode() == KeyCode.F4) {

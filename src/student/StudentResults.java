@@ -53,10 +53,10 @@ public class StudentResults {
 		itmHelp.setOnAction(e -> {
 			studentHelp.about();
 		});
-
+		About obj = new About();
 		MenuItem itmAbout = new MenuItem("About");
 		itmAbout.setOnAction(e -> {
-			About.about();
+			obj.openAbout();
 
 		});
 		help.getItems().addAll(itmAbout);

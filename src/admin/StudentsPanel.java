@@ -3,7 +3,8 @@ package admin;
 import java.util.List;
 import java.util.Locale;
 
-import javafx.application.Application;
+import Help.About;
+import Help.studentHelp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -25,12 +26,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import Help.About;
-import Help.AdminHelp;
-import Help.studentHelp;
 import menu.I18N;
 
 public class StudentsPanel {
@@ -103,9 +100,9 @@ public class StudentsPanel {
 
 			studentHelp.about();
 		});
-		
+		About obj = new About();
 		itmAbout.setOnAction(e -> {
-			About.about();
+			obj.openAbout();
 
 		});
 
