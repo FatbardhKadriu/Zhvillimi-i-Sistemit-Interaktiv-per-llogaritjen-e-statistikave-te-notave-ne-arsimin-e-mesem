@@ -20,7 +20,7 @@ public class About {
 		
 		webEngine.load(url);
 
-		Scene sc = new Scene(browser, 800, 500);
+		Scene sc = new Scene(browser, 500, 300);
 
 		helpAboutStage.setTitle("About Us");
 		helpAboutStage.setScene(sc);
