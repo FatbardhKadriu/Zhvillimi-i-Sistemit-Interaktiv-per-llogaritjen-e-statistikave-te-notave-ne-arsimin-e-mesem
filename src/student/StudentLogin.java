@@ -1,35 +1,34 @@
 package student;
 
-import database.DBConnection;
-import database.Hash;
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import database.DBConnection;
+import database.Hash;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import menu.I18N;
 
 public class StudentLogin {
 
 	public TextField studentID = new TextField();
 	private PasswordField password = new PasswordField();
 	private Label ErrorResult = new Label();
-	private Button btnLogin = new Button("Login");
-	private Label title = new Label("Login as Student");
+	private Button btnLogin = new Button();
+	private Label title = new Label();
 	private Stage mainStage;
 	private StudentResults obj = new StudentResults();
 	public void createStage() {
@@ -38,6 +37,8 @@ public class StudentLogin {
 		VBox pane = new VBox(60);
 		mainStage = primaryStage;
 		GridPane loginPane = new GridPane();
+		btnLogin=I18N.getButton("login");
+		Label title=I18N.getLabel("loginAsStudent");
 		loginPane.addRow(0, new Label("ID"), studentID);
 		loginPane.addRow(1, new Label("Password"), password);
 		loginPane.add(btnLogin, 1, 3);
