@@ -57,7 +57,7 @@ public class FinalGrade
 	{
 		List<FinalGrade> gradeList = new ArrayList();
 
-		String query = "Select * from finalGrade";
+		String query = "Select * from finalPeriodMark";
 
 		try
 		{
