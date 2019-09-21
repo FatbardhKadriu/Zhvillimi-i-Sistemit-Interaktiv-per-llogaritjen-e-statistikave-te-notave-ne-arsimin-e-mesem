@@ -139,7 +139,6 @@ CREATE TABLE Administrator
 INSERT INTO Administrator VALUES 
 ('1','bardhi','bardhi','052887890c09cb97fde4008cf34823285aa91d0e');
 
-
 INSERT INTO Subjects VALUES
 ('1000', 'Gjuhe Shqipe'),
 ('1001', 'Gjuhe Angleze'),
@@ -157,7 +156,6 @@ INSERT INTO Subjects VALUES
 ('1013', 'Kultura dhe Shoqeria'),
 ('1014', 'Ekologji');
 
-
 INSERT INTO ClassRoom VALUES
 ('101'),
 ('102'),
@@ -166,14 +164,12 @@ INSERT INTO ClassRoom VALUES
 ('105'),
 ('106');
 
-
 INSERT INTO City VALUES
 ('2000', 'Prishitne', 'Kosove', '10000'),
 ('2001', 'Kline', 'Kosove', '32000'),
 ('2002', 'Drenas', 'Kosove', '11000'),
 ('2003', 'Istog', 'Kosove', '12000'),
 ('2004', 'Gjakove', 'Kosove', '50000');
-
 
 INSERT INTO gradeDescription VALUES
 ('5', 'Shkelqyeshem'),
@@ -182,20 +178,15 @@ INSERT INTO gradeDescription VALUES
 ('2', 'Mjaftueshem'),
 ('1', 'dobet');
 
-
 CREATE VIEW finalPeriodMark AS 
 SELECT studentID, subjectID, SUM(finalPeriodMark) / 3 AS 'finalPeriodMark'
 FROM Grades 
 GROUP BY studentID, subjectID;
 
-SELECT * FROM finalPeriodMark;
-
 CREATE VIEW StudentsGPA AS
 SELECT studentID, AVG(finalPeriodMark) AS 'Average'
 FROM finalPeriodMark
 GROUP BY studentID;
-
-SELECT * FROM StudentsGPA;
 
 CREATE VIEW mjaftueshem(mjaft) AS
 SELECT COUNT(*)
@@ -217,20 +208,13 @@ SELECT COUNT(*)
 FROM StudentsGPA
 WHERE Average >= 4.5 AND Average <= 5;
 
-
 CREATE VIEW CountStudents(mjaft, mire, shumemire, shkelqyeshem) AS
 SELECT mjaft, mire, shumemire, shkelqyeshem
 FROM mjaftueshem, mire, shumemire, shkelqyeshem;
-
-
-SELECT * FROM CountStudents;
 
 CREATE VIEW NrLendeve AS
 SELECT subjectID, count(teacherID) AS 'NumriProfesoreve'
 FROM Teacher
 GROUP BY(subjectID);
 
-SELECT * from Nrlendeve;
-
-select * from teacher;
 
